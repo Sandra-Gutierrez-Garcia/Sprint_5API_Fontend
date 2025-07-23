@@ -1,26 +1,50 @@
 # AppBook - Frontend
 
-## Descripción del proyecto
-AppBook es una aplicación web donde escritores pueden crear y compartir sus libros para que los lectores los descubran y lean. El frontend está desarrollado en React, con un diseño moderno y preparado para consumir una API RESTful desarrollada en PHP/Laravel.
+## 1. Descripció del model IA seleccionat i motiu de l'elecció
+He utilitzat GitHub Copilot com a assistent d'IA per al desenvolupament del frontend. L'he escollit perquè permet generar codi de manera ràpida, iterativa i adaptada a les meves necessitats, facilitant la creació d'interfícies modernes i la resolució de problemes de disseny i estructura en React.
 
+## 2. Registre de les interaccions amb la IA
+- Vaig demanar ajuda per crear un header fix, professional i responsiu.
+- Vaig sol·licitar inspiració i estructura per al banner principal, ajustant el seu disseny fins aconseguir un resultat atractiu.
+- Vaig demanar que la imatge de portada estigués al costat del text, amb proporcions de llibre i tot centrat.
+- Vaig ajustar la responsivitat, separació i tipografia segons les propostes de la IA.
+- Vaig demanar la creació d'una secció de llibres ficticis, amb portades locals i estructura visual equilibrada.
+- Exemples de preguntes: "Centra el banner i la imatge", "Haz que los libros estén perfectamente alineados", "Genera datos ficticis per als llibres".
+- La IA va respondre amb codi, explicacions i suggeriments visuals per cada pas.
 
-## Análisis del código generado
-- El código es modular y claro, con componentes reutilizables.
-- Utiliza CSS moderno (flex, grid, media queries) y tipografías elegantes.
-- Es fácil de adaptar y personalizar (colores, menús, secciones).
-- He realizado ajustes como cambio de nombres de secciones, colores suaves, menú simplificado y tipografía personalizada para el logo.
+## 3. Anàlisi del codi generat per la IA
+- El codi generat és modular, clar i fàcilment personalitzable.
+- S'utilitzen components funcionals de React, hooks (`useState`, `useEffect`) i CSS modern (flex, grid, media queries).
+- Es va adaptar el codi per utilitzar només imatges locals i dades fictícies, assegurant coherència visual i funcionalitat sense backend real.
+- Es van fer petits ajustos manuals per millorar la responsivitat i l'alineació dels elements.
 
+## 4. Descripció del procés de connexió frontend-backend
+- El frontend està preparat per consumir una API RESTful (exemple: crides amb `fetch` o `axios`).
+- Per demostrar la connexió, es va simular una crida a l'API amb dades fictícies, mostrant com es rebrien i renderitzarien els llibres.
+- Si es connecta amb un backend PHP/Laravel real, només caldria substituir la crida mock per l'endpoint real (exemple: `fetch('http://localhost:8000/api/books')`).
+- Reptes: adaptar el codi per funcionar sense backend real i garantir que la interfície sigui flexible per a dades dinàmiques.
 
-## Cómo creé el Header MainPage
+## 5. Reflexió sobre el procés d'aprenentatge
+- El procés m'ha permès entendre millor la col·laboració amb IA per desenvolupar interfícies modernes i responsives.
+- He après a iterar ràpidament sobre el disseny, a ajustar detalls visuals i a documentar el procés de manera clara.
+- El repte principal ha estat aconseguir una coherència visual i funcional sense dades reals, però la IA ha facilitat molt la generació de codi i solucions creatives.
 
-- Analicé referencias visuales modernas para definir un header limpio y profesional.
-- Implementé el header como un componente fijo en la parte superior, con ancho máximo y centrado, para que siempre esté visible al hacer scroll.
-- Añadí el logo con tipografía elegante, un menú de navegación sencillo (Home, Books, Writers) y botones de Login/Register alineados a la derecha.
-- Ajusté los estilos para lograr equilibrio, buena separación y colores suaves, asegurando una experiencia de usuario agradable y coherente con la temática de la app.
+# AppBook - Home Page
 
-## Interacciones con la IA para el Header
+## Resumen de la Main Page
 
-- Fui pidiendo cambios y mejoras en el header según mis necesidades: primero quería un header horizontal, luego que fuera fijo y siempre visible al hacer scroll.
-- Solicité que el header no ocupara toda la pantalla, sino que estuviera centrado y con un ancho máximo para verse más elegante.
-- Pedí ajustes en la alineación de los elementos internos (logo, menú, botones) y en los colores para que fueran suaves y agradables.
-- Cada vez que detectaba un detalle visual que no me convencía, lo comunicaba y la IA me proponía soluciones rápidas y efectivas, hasta conseguir el resultado deseado.
+La Main Page de AppBook presenta un disseny modern i net, amb un header fix, un banner destacat i una secció de llibres ficticis perfectament alineats. Tot el contingut és responsiu i visualment atractiu, pensat per oferir una experiència agradable tant a escriptors com a lectors. L'estructura facilita la futura integració amb una API real i l'ampliació de funcionalitats.
+
+## Resumen de interacciones interesantes con la IA
+
+Durante el desarrollo de la Home Page, las interacciones más interesantes con la IA han sido:
+
+- Solicitar la creación i millora d'un header fix, professional i responsiu, ajustant alineació, colors i tipografia.
+- Pedir inspiració i estructura per al banner principal, logrant un disseny atractiu i modern amb fons degradat i elements centrats.
+- Ajustar l'amplada, altura i disposició del banner fins que s'adaptà perfectament a la referència visual.
+- Solicitar la generació de llibres ficticis, utilitzant només imatges locals i dades inventades, per mostrar una secció de llibres realista i visualment coherent.
+- Pedir que els llibres estiguessin perfectament centrats i alineats, amb la mateixa mida i separació a la quadrícula.
+- Iterar sobre la responsivitat i els detalls visuals perquè la pàgina es veiés bé a qualsevol dispositiu.
+
+- Exemples de preguntes: "Crea un header responsiu", "Millora el banner amb un fons degradat", "Genera llibres ficticis amb imatges locals".
+
