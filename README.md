@@ -29,6 +29,27 @@ He utilitzat GitHub Copilot com a assistent d'IA per al desenvolupament del fron
 - He après a iterar ràpidament sobre el disseny, a ajustar detalls visuals i a documentar el procés de manera clara.
 - El repte principal ha estat aconseguir una coherència visual i funcional sense dades reals, però la IA ha facilitat molt la generació de codi i solucions creatives.
 
+# AppBook - Página Book
+
+## Resumen de interacciones interesantes con la IA sobre la página Book
+
+Durante el desarrollo de la página Book, estas han sido las interacciones más interesantes:
+
+- Solicité crear una nueva página llamada Book amb la mateixa estructura base que Home, però mostrant llibres per gèneres i una secció de tots els llibres.
+- Pedí que els apartats de llibres estiguessin organitzats per gènere (Fantasy, Romance, Sci-Fi, Mystery) i que al final hi hagués un apartat amb tots els llibres junts.
+- Solicité que els llibres quedessin perfectament centrats a la quadrícula de cada secció.
+- Pedí que la navegació entre Home i Book fos possible des del menú, utilitzant React Router.
+- Es va generar i aplicar un fitxer d'estils específic per a Book, assegurant un disseny net i modern.
+- Es va documentar com tancar la branca de desenvolupament utilitzant git flow després de finalitzar la funcionalitat.
+
+Exemples de preguntes:
+- "Vamos a crear la página book, allí tiene el mismo estructura que home, pero la diferencia tiene apartados, donde muestran libros son de un género específico..."
+- "Quiero que quede centrado los libros"
+- "Ya podemos cerrar esta rama con los cambios"
+- "git flow"
+
+Aquestes interaccions han permès construir una pàgina Book modular, visualment coherent i fàcil d'ampliar, integrant bones pràctiques de navegació i estils en React.
+
 # AppBook - Home Page
 
 ## Resumen de la Main Page
@@ -37,9 +58,9 @@ La Main Page de AppBook presenta un disseny modern i net, amb un header fix, un 
 
 ## Resumen de interacciones interesantes con la IA
 
-Durante el desarrollo de la Home Page, las interacciones más interesantes con la IA han sido:
+Durante el desenvolupament de la Home Page, les interaccions més interessants amb la IA han estat:
 
-- Solicitar la creación i millora d'un header fix, professional i responsiu, ajustant alineació, colors i tipografia.
+- Solicitar la creació i millora d'un header fix, professional i responsiu, ajustant alineació, colors i tipografia.
 - Pedir inspiració i estructura per al banner principal, logrant un disseny atractiu i modern amb fons degradat i elements centrats.
 - Ajustar l'amplada, altura i disposició del banner fins que s'adaptà perfectament a la referència visual.
 - Solicitar la generació de llibres ficticis, utilitzant només imatges locals i dades inventades, per mostrar una secció de llibres realista i visualment coherent.
