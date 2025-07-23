@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./HomePage.css";
 import bannerBook from "./assets/images/girl-7459130_1280.jpg";
 import img1 from "./assets/images/bonfire-9681097_1280.jpg";
@@ -115,8 +116,8 @@ const HomePage = () => {
       <header className="main-header">
         <div className="header-logo">AppBook</div>
         <nav className="header-menu">
-          <a href="#" className="active">Home</a>
-          <a href="#">Books</a>
+          <Link to="/" className="active">Home</Link>
+          <Link to="/books">Books</Link>
           <a href="#">Writers</a>
         </nav>
         <div className="header-actions">
