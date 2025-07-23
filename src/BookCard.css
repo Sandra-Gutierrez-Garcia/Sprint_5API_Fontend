@@ -1,0 +1,43 @@
+.showcase-book {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.showcase-book:hover {
+  box-shadow: 0 4px 24px rgba(108,99,255,0.13);
+}
+
+.showcase-book-img {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.showcase-book-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3a4b;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+.showcase-book-author {
+  font-size: 0.95rem;
+  color: #6c63ff;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.showcase-book-desc {
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+}

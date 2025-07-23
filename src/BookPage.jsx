@@ -4,6 +4,8 @@ import img1 from "./assets/images/bonfire-9681097_1280.jpg";
 import img2 from "./assets/images/girl-7459130_1280.jpg";
 import img3 from "./assets/images/hall-7986771_1280.jpg";
 import img4 from "./assets/images/spiral-staircase-877834_1280.jpg";
+import Header from "./Header";
+import BookCard from "./BookCard";
 
 const books = [
   { id: 1, title: "The Lantern’s Tale", author: "Nina Kestrel", cover: img1, genre: "Fantasy" },
@@ -23,13 +25,7 @@ const BookSection = ({ genre, books }) => (
     <h2>{genre}</h2>
     <div className="books-list">
       {books.map(book => (
-        <div className="book-card" key={book.id}>
-          <img src={book.cover} alt={book.title} className="book-img" />
-          <div className="book-info">
-            <h3>{book.title}</h3>
-            <p className="book-author">by {book.author}</p>
-          </div>
-        </div>
+        <BookCard key={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description || ""} />
       ))}
     </div>
   </section>
@@ -38,18 +34,7 @@ const BookSection = ({ genre, books }) => (
 const BookPage = () => {
   return (
     <div className="bookpage-container">
-      <header className="main-header">
-        <div className="header-logo">AppBook</div>
-        <nav className="header-menu">
-          <a href="/" >Home</a>
-          <a href="#" className="active">Books</a>
-          <a href="#">Writers</a>
-        </nav>
-        <div className="header-actions">
-          <button className="login-btn">Login</button>
-          <button className="register-btn">Register</button>
-        </div>
-      </header>
+      <Header />
       {genres.map(genre => (
         <BookSection key={genre} genre={genre} books={books.filter(b => b.genre === genre)} />
       ))}
@@ -57,13 +42,7 @@ const BookPage = () => {
         <h2>Todos los libros</h2>
         <div className="books-list">
           {books.map(book => (
-            <div className="book-card" key={book.id}>
-              <img src={book.cover} alt={book.title} className="book-img" />
-              <div className="book-info">
-                <h3>{book.title}</h3>
-                <p className="book-author">by {book.author}</p>
-              </div>
-            </div>
+            <BookCard key={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description || ""} />
           ))}
         </div>
       </section>

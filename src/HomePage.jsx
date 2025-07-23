@@ -6,6 +6,8 @@ import img1 from "./assets/images/bonfire-9681097_1280.jpg";
 import img2 from "./assets/images/girl-7459130_1280.jpg";
 import img3 from "./assets/images/hall-7986771_1280.jpg";
 import img4 from "./assets/images/spiral-staircase-877834_1280.jpg";
+import Header from "./Header";
+import BookCard from "./BookCard";
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -112,20 +114,7 @@ const HomePage = () => {
 
   return (
     <div className="homepage-new">
-      {/* Header horizontal */}
-      <header className="main-header">
-        <div className="header-logo">AppBook</div>
-        <nav className="header-menu">
-          <Link to="/" className="active">Home</Link>
-          <Link to="/books">Books</Link>
-          <a href="#">Writers</a>
-        </nav>
-        <div className="header-actions">
-          <button className="login-btn">Login</button>
-          <button className="register-btn">Register</button>
-        </div>
-      </header>
-
+      <Header />
       {/* Banner del libro más gustado */}
       <section className="top-book-banner">
         <div className="top-book-info">
@@ -140,14 +129,7 @@ const HomePage = () => {
         <h2 className="showcase-title">Books Showcase</h2>
         <div className="showcase-list">
           {mockBooks.map(book => (
-            <div className="showcase-book" key={book.id}>
-              <img src={book.cover} alt={book.title} className="showcase-book-img" />
-              <div className="showcase-book-info">
-                <h3 className="showcase-book-title">{book.title}</h3>
-                <p className="showcase-book-author">by {book.author}</p>
-                <p className="showcase-book-desc">{book.description}</p>
-              </div>
-            </div>
+            <BookCard key={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description} />
           ))}
         </div>
       </section>

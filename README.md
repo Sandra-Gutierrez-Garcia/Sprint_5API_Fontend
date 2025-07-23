@@ -33,9 +33,9 @@ He utilitzat GitHub Copilot com a assistent d'IA per al desenvolupament del fron
 
 ## Resumen de interacciones interesantes con la IA sobre la página Book
 
-Durante el desarrollo de la página Book, estas han sido las interacciones más interesantes:
+Durante el desenvolupament de la pàgina Book, aquestes han estat les interaccions més interessants:
 
-- Solicité crear una nueva página llamada Book amb la mateixa estructura base que Home, però mostrant llibres per gèneres i una secció de tots els llibres.
+- Solicité crear una nova pàgina llamada Book amb la mateixa estructura base que Home, però mostrant llibres per gèneres i una secció de tots els llibres.
 - Pedí que els apartats de llibres estiguessin organitzats per gènere (Fantasy, Romance, Sci-Fi, Mystery) i que al final hi hagués un apartat amb tots els llibres junts.
 - Solicité que els llibres quedessin perfectament centrats a la quadrícula de cada secció.
 - Pedí que la navegació entre Home i Book fos possible des del menú, utilitzant React Router.
@@ -43,12 +43,11 @@ Durante el desarrollo de la página Book, estas han sido las interacciones más 
 - Es va documentar com tancar la branca de desenvolupament utilitzant git flow després de finalitzar la funcionalitat.
 
 Exemples de preguntes:
-- "Vamos a crear la página book, allí tiene el mismo estructura que home, pero la diferencia tiene apartados, donde muestran libros son de un género específico..."
-- "Quiero que quede centrado los libros"
-- "Ya podemos cerrar esta rama con los cambios"
-- "git flow"
 
-Aquestes interaccions han permès construir una pàgina Book modular, visualment coherent i fàcil d'ampliar, integrant bones pràctiques de navegació i estils en React.
+- "Vamos a crear la página book, allí tiene el mismo estructura que home, pero la diferencia tiene apartados, donde muestran libros son de un género específico..."
+
+
+
 
 # AppBook - Home Page
 
@@ -68,4 +67,31 @@ Durante el desenvolupament de la Home Page, les interaccions més interessants a
 - Iterar sobre la responsivitat i els detalls visuals perquè la pàgina es veiés bé a qualsevol dispositiu.
 
 - Exemples de preguntes: "Crea un header responsiu", "Millora el banner amb un fons degradat", "Genera llibres ficticis amb imatges locals".
+
+# AppBook - Login y Register Pages
+
+## Resumen de los cambios recientes
+
+- Se crearon las páginas Login y Register seguint la mateixa estructura, colors i coherència visual que Home i Book.
+- Se implementó un component `Header` reutilizable, ara present a Home, Book, Login i Register per mantenir la identitat visual en tota l'app.
+- Els formularis de Login i Register utilitzen estils moderns i responsius, amb el mateix fons i tipografia que la resta de l'aplicació.
+- Se reorganitzà el codi perquè el header no estigui duplicat, facilitant el manteniment i la coherència.
+- Se creó una rama feature amb git flow per desenvolupar aquestes pàgines de forma ordenada.
+
+## Exemple de interacción
+
+- "Crea las páginas login y register, pero que tengan el mismo header, estructura y colores que home para que la experiencia sea fluida y coherente."
+
+# Cambios recientes y componentes reutilizables
+
+## Componentes reutilizables
+- Se creó el componente `Header` per al menú superior, usat en totes les pàgines principals.
+- Se creó el componente `BookCard` per mostrar llibres de forma uniforme i reutilitzable en Home i Book.
+
+## Modificaciones importants
+- Se reemplazó el header hardcodeado en Home i Book per el componente `Header`.
+- Se reemplazó la renderización de llibres en Home i Book per el componente `BookCard`.
+- El menú ara resalta dinàmicament la pàgina activa (Home o Books) usando `useLocation` de React Router.
+
+Aquests canvis milloren la coherència visual, el manteniment i l'escalabilitat del projecte.
 
