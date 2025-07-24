@@ -1,23 +1,46 @@
 import React from "react";
-import "./RegisterPage.css";
 import Header from "./Header";
+import "./RegisterPage.css";
 
-const RegisterPage = () => {
-  return (
-    <div className="page-container">
-      <Header />
-      <div className="form-container">
-        <h2>Registro</h2>
-        <form>
-          <input type="text" placeholder="Nombre completo" required />
-          <input type="email" placeholder="Correo electrónico" required />
-          <input type="password" placeholder="Contraseña" required />
-          <button type="submit">Registrarse</button>
-        </form>
-        <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
-      </div>
-    </div>
-  );
-};
+function RegisterPage() {
+	return (
+		<div className="registerpage-new">
+			<Header />
+			<section className="top-book-banner">
+				<div className="top-book-info">
+					<h2>¡Únete y vive la experiencia lectora!</h2>
+					<p className="top-book-title">
+						Regístrate para descubrir libros y conocer a otros usuarios que
+						comparten sus historias.
+					</p>
+				</div>
+			</section>
+
+			<section className="register-form-section">
+				<h2 className="form-title">Crea tu cuenta</h2>
+				<form className="register-form">
+					<input
+						type="text"
+						placeholder="Usuario"
+						className="register-input"
+					/>
+					<input
+						type="email"
+						placeholder="Email"
+						className="register-input"
+					/>
+					<input
+						type="password"
+						placeholder="Contraseña"
+						className="register-input"
+					/>
+					<button type="submit" className="register-btn">
+						Registrarse
+					</button>
+				</form>
+			</section>
+		</div>
+	);
+}
 
 export default RegisterPage;

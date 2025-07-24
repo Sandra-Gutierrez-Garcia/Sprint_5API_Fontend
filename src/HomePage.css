@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 
+body {
+  overflow-x: hidden;
+}
+
 .main-header {
   width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   background: #fff;
   display: flex;
   align-items: center;
@@ -47,36 +53,24 @@
   flex: 1;
   justify-content: flex-end;
 }
-.login-btn {
-  background: #bfc8e6;
-  color: #2d314d;
+.login-btn, .register-btn {
+  background: linear-gradient(90deg, #e0e7fa 0%, #bfc8e6 100%);
+  color: #4a3c8c;
   border: none;
-  border-radius: 18px;
-  padding: 8px 22px;
-  font-size: 1rem;
-  font-weight: 500;
+  border-radius: 12px;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  font-weight: 600;
   cursor: pointer;
-  margin-left: 8px;
-  transition: background 0.2s, color 0.2s;
+  margin-left: 0;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 6px rgba(80,80,120,0.10);
+  outline: none;
 }
-.login-btn:hover {
-  background: #a3b1d1;
-  color: #222;
-}
-.register-btn {
-  background: #bfc8e6;
-  color: #2d314d;
-  border: none;
-  border-radius: 18px;
-  padding: 8px 22px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-.register-btn:hover {
-  background: #a3b1d1;
-  color: #222;
+.login-btn:hover, .register-btn:hover {
+  background: linear-gradient(90deg, #e94e77 0%, #e0e7fa 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px #e94e7733;
 }
 .top-book-banner {
   display: flex;
