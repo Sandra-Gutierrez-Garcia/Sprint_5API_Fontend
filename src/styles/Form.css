@@ -1,8 +1,29 @@
+body, .main-bg, .loginpage-bg, .registerpage-bg {
+  background: #f5f6fa;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.main-container {
+  width: 80vw;
+  max-width: 1100px;
+  margin: 40px auto 0 auto;
+  padding: 32px 48px;
+  box-sizing: border-box;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(80,80,120,0.10);
+}
+
 .form-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 32px;
+  width: 100%;
+  max-width: 900px;
+  margin: 32px auto 0 auto;
+  box-sizing: border-box;
 }
 
 .form-title {
@@ -36,18 +57,124 @@
   border: 1.5px solid #4a3c8c;
 }
 
+.btn,
+.login-btn,
+.register-btn,
+.logout-btn,
+.profile-header-btn {
+  padding: 12px 32px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  border-radius: 12px;
+  min-width: 140px;
+  box-sizing: border-box;
+}
+
 .btn {
   background: #4a3c8c;
   color: #fff;
-  font-weight: 600;
   border: none;
-  border-radius: 8px;
-  padding: 12px 0;
-  font-size: 1.1rem;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .btn:hover {
   background: #6c5ce7;
+}
+
+.user-profile-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  background: #fff;
+  padding: 32px 40px;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(80,80,120,0.10);
+  min-width: 340px;
+  margin-top: 12px;
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0e7fa 0%, #f8e8ee 100%);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 2px 8px rgba(80,80,120,0.07);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-data {
+  color: #4a3c8c;
+  font-weight: 500;
+  background: #f5f6fa;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.profile-page-bg {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f5f6fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginpage-bg {
+  background: #f5f6fa;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.registerpage-new {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-header-actions {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+  margin-bottom: 32px;
+  margin-top: 8px;
+  padding-right: 8px;
+}
+
+.profile-header-btn {
+  background: linear-gradient(90deg, #e0e7fa 0%, #bfc8e6 100%);
+  color: #4a3c8c;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 6px rgba(80,80,120,0.10);
+  outline: none;
+  margin: 0;
+}
+
+.profile-header-btn.logout {
+  background: linear-gradient(90deg, #e94e77 0%, #e0e7fa 100%);
+  color: #fff;
+}
+
+.profile-header-btn:hover {
+  background: linear-gradient(90deg, #e94e77 0%, #e0e7fa 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px #e94e7733;
 }
