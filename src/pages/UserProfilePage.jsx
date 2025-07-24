@@ -12,30 +12,36 @@ function UserProfilePage() {
   return (
     <div className="profile-page-bg">
       <Header />
-      <div className="registerpage-new">
-        <section className="profile-section">
-          <h2 className="form-title">Datos del usuario</h2>
-          <div className="profile-header-actions">
-            <button className="profile-header-btn">Editar perfil</button>
-            <button className="profile-header-btn logout">Cerrar sesión</button>
-          </div>
-          {user ? (
-            <div className="form user-profile-card">
-              <div className="user-avatar">
-                <span role="img" aria-label="avatar">👤</span>
-              </div>
-              <div className="user-info">
-                <div className="user-info-data">
-                  <p><strong>Usuario:</strong> <span className="user-data">{user.username}</span></p>
-                  <p><strong>Email:</strong> <span className="user-data">{user.email}</span></p>
-                  <p><strong>Contraseña:</strong> <span className="user-data">******</span></p>
-                </div>
-              </div>
+      <div className="user-profile-card-modern">
+        <h2 className="profile-title">Configuración de cuenta</h2>
+        <div className="profile-main-row">
+          <div className="profile-avatar-block">
+            <div className="user-avatar-modern">
+              <span role="img" aria-label="avatar">👤</span>
             </div>
-          ) : (
-            <p className="user-error">No hay usuario logueado.</p>
-          )}
-        </section>
+          </div>
+          <div className="profile-info-block">
+            <div className="profile-info-row">
+              <div className="profile-info-label">Usuario</div>
+              <div className="profile-info-value">{user?.username || '-'}</div>
+            </div>
+            <div className="profile-info-row">
+              <div className="profile-info-label">Email</div>
+              <div className="profile-info-value">{user?.email || '-'}</div>
+            </div>
+            <div className="profile-info-row">
+              <div className="profile-info-label">Contraseña</div>
+              <div className="profile-info-value">******</div>
+            </div>
+          </div>
+        </div>
+        <div className="profile-actions-row">
+          <button className="profile-save-btn">Editar</button>
+          <button className="profile-header-btn logout">Cerrar sesión</button>
+          <a href="/crear-writer" className="profile-header-btn" style={{textDecoration:'none'}}>Crear perfil de escritor</a>
+        </div>
+      </div>
+      <div className="registerpage-new">
         <section className="user-fav-books-section">
           <h2 className="fav-books-title">Libros preferidos</h2>
           <div className="user-fav-books-list">
