@@ -2,45 +2,41 @@ import React from "react";
 import "../styles/Form.css";
 import "../styles/HomePage.css";
 import { getCurrentUser } from "../utils/userStorage";
+import { getWritersFromLocalStorage } from "../utils/writerStorage";
 import Header from "../components/Header";
 import BookCard from "../components/BookCard";
+import ProfileCard from "../components/ProfileCard";
 import { books } from "../utils/booksData";
 
 function UserProfilePage() {
   const user = getCurrentUser();
+  const writers = getWritersFromLocalStorage();
+  const writerProfile = writers.find(w => w.username === user?.username);
 
   return (
     <div className="profile-page-bg">
       <Header />
-      <div className="user-profile-card-modern">
-        <h2 className="profile-title">Configuración de cuenta</h2>
-        <div className="profile-main-row">
-          <div className="profile-avatar-block">
-            <div className="user-avatar-modern">
-              <span role="img" aria-label="avatar">👤</span>
-            </div>
-          </div>
-          <div className="profile-info-block">
-            <div className="profile-info-row">
-              <div className="profile-info-label">Usuario</div>
-              <div className="profile-info-value">{user?.username || '-'}</div>
-            </div>
-            <div className="profile-info-row">
-              <div className="profile-info-label">Email</div>
-              <div className="profile-info-value">{user?.email || '-'}</div>
-            </div>
-            <div className="profile-info-row">
-              <div className="profile-info-label">Contraseña</div>
-              <div className="profile-info-value">******</div>
-            </div>
-          </div>
-        </div>
-        <div className="profile-actions-row">
-          <button className="profile-save-btn">Editar</button>
-          <button className="profile-header-btn logout">Cerrar sesión</button>
-          <a href="/crear-writer" className="profile-header-btn" style={{textDecoration:'none'}}>Crear perfil de escritor</a>
-        </div>
-      </div>
+      <ProfileCard
+        title="Configuración de cuenta"
+        avatar={<span role="img" aria-label="avatar">👤</span>}
+        fields={[
+          { label: "Usuario", value: user?.username || '-' },
+          { label: "Email", value: user?.email || '-' },
+          { label: "Contraseña", value: "******" }
+        ]}
+        actions={
+          <>
+            <button className="profile-save-btn">Editar</button>
+            <button className="profile-header-btn logout">Cerrar sesión</button>
+            {!writerProfile && (
+              <a href="/crear-writer" className="profile-header-btn" style={{textDecoration:'none'}}>Crear perfil de escritor</a>
+            )}
+            {writerProfile && (
+              <a href="/perfil-writer" className="profile-header-btn" style={{textDecoration:'none'}}>Ver perfil de escritor</a>
+            )}
+          </>
+        }
+      />
       <div className="registerpage-new">
         <section className="user-fav-books-section">
           <h2 className="fav-books-title">Libros preferidos</h2>
