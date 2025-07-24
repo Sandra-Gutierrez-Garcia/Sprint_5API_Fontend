@@ -23,7 +23,7 @@ function LoginPage() {
       setSuccess(true);
       setError("");
       form.reset();
-      navigate("/perfil"); // Redirige al perfil tras login exitoso
+      navigate("/perfil");
     } else {
       setError("Usuario o contraseña incorrectos");
       setSuccess(false);
@@ -41,48 +41,15 @@ function LoginPage() {
           </p>
         </div>
       </section>
-
       <section className="form-section">
         <h2 className="form-title">Iniciar sesión</h2>
         <form className="form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Usuario"
-            className="input"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            className="input"
-            required
-          />
-          <button type="submit" className="btn">
-            Entrar
-          </button>
+          <input type="text" placeholder="Usuario" className="input" required />
+          <input type="password" placeholder="Contraseña" className="input" required />
+          <button type="submit" className="btn">Iniciar sesión</button>
         </form>
-        {success && (
-          <p
-            style={{
-              color: "#4a3c8c",
-              marginTop: "18px",
-              fontWeight: "600",
-            }}
-          >
-            ¡Login exitoso! Bienvenido.
-          </p>
-        )}
-        {error && (
-          <p
-            style={{
-              color: "#e94e77",
-              marginTop: "18px",
-              fontWeight: "600",
-            }}
-          >
-            {error}
-          </p>
-        )}
+        {error && <p style={{ color: '#e94e77', marginTop: '18px', fontWeight: '600' }}>{error}</p>}
+        {success && <p style={{ color: '#4a3c8c', marginTop: '18px', fontWeight: '600' }}>¡Login exitoso!</p>}
       </section>
     </div>
   );

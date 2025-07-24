@@ -54,14 +54,30 @@ body {
 }
 .books-showcase {
   margin: 56px auto 0 auto;
+  width: 100%;
   max-width: 1100px;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 2px 12px #e9e4f033;
-  padding: 36px 32px 32px 32px;
+  padding-top: 24px;
+  padding-bottom: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.books-showcase-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #222;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 48px 0 32px 0;
+  padding: 0;
+  background: none;
+  border: none;
+  display: block;
+  width: 100%;
 }
 .showcase-title {
   font-family: 'Playfair Display', serif;

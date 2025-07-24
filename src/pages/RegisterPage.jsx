@@ -36,7 +36,6 @@ function RegisterPage() {
 					</p>
 				</div>
 			</section>
-
 			<section className="form-section">
 				<h2 className="form-title">Crea tu cuenta</h2>
 				<form className="form" onSubmit={handleSubmit}>
