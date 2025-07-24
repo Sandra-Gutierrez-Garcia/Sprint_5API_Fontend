@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./HomePage.css";
-import bannerBook from "./assets/images/girl-7459130_1280.jpg";
-import img1 from "./assets/images/bonfire-9681097_1280.jpg";
-import img2 from "./assets/images/girl-7459130_1280.jpg";
-import img3 from "./assets/images/hall-7986771_1280.jpg";
-import img4 from "./assets/images/spiral-staircase-877834_1280.jpg";
-import Header from "./Header";
-import BookCard from "./BookCard";
+import "../styles/HomePage.css";
+import bannerBook from "../assets/images/girl-7459130_1280.jpg";
+import img1 from "../assets/images/bonfire-9681097_1280.jpg";
+import img2 from "../assets/images/girl-7459130_1280.jpg";
+import img3 from "../assets/images/hall-7986771_1280.jpg";
+import img4 from "../assets/images/spiral-staircase-877834_1280.jpg";
+import Header from "../components/Header";
+import BookCard from "../components/BookCard";
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

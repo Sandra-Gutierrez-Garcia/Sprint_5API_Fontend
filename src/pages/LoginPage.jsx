@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./Header";
-import "./LoginPage.css";
+import Header from "../components/Header";
+import "../styles/Form.css";
 
 function LoginPage() {
   return (
@@ -15,20 +15,12 @@ function LoginPage() {
         </div>
       </section>
 
-      <section className="login-form-section">
+      <section className="form-section">
         <h2 className="form-title">Iniciar sesión</h2>
-        <form className="login-form">
-          <input
-            type="text"
-            placeholder="Usuario"
-            className="login-input"
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            className="login-input"
-          />
-          <button type="submit" className="login-btn">
+        <form className="form">
+          <input type="text" placeholder="Usuario" className="input" />
+          <input type="password" placeholder="Contraseña" className="input" />
+          <button type="submit" className="btn">
             Entrar
           </button>
         </form>

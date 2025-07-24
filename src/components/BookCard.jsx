@@ -1,5 +1,5 @@
 import React from "react";
-import "./BookCard.css";
+import "../styles/BookCard.css";
 
 const BookCard = ({ cover, title, author, description }) => (
   <div className="showcase-book">

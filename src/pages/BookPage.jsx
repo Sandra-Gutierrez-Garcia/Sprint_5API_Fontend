@@ -1,11 +1,11 @@
 import React from "react";
-import "./BookPage.css";
-import img1 from "./assets/images/bonfire-9681097_1280.jpg";
-import img2 from "./assets/images/girl-7459130_1280.jpg";
-import img3 from "./assets/images/hall-7986771_1280.jpg";
-import img4 from "./assets/images/spiral-staircase-877834_1280.jpg";
-import Header from "./Header";
-import BookCard from "./BookCard";
+import "../styles/BookPage.css";
+import img1 from "../assets/images/bonfire-9681097_1280.jpg";
+import img2 from "../assets/images/girl-7459130_1280.jpg";
+import img3 from "../assets/images/hall-7986771_1280.jpg";
+import img4 from "../assets/images/spiral-staircase-877834_1280.jpg";
+import Header from "../components/Header";
+import BookCard from "../components/BookCard";
 
 const books = [
   { id: 1, title: "The Lantern’s Tale", author: "Nina Kestrel", cover: img1, genre: "Fantasy" },

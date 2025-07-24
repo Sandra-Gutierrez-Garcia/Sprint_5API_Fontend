@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./Header";
-import "./RegisterPage.css";
+import Header from "../components/Header";
+import "../styles/Form.css";
 
 function RegisterPage() {
 	return (
@@ -16,25 +16,25 @@ function RegisterPage() {
 				</div>
 			</section>
 
-			<section className="register-form-section">
+			<section className="form-section">
 				<h2 className="form-title">Crea tu cuenta</h2>
-				<form className="register-form">
+				<form className="form">
 					<input
 						type="text"
 						placeholder="Usuario"
-						className="register-input"
+						className="input"
 					/>
 					<input
 						type="email"
 						placeholder="Email"
-						className="register-input"
+						className="input"
 					/>
 					<input
 						type="password"
 						placeholder="Contraseña"
-						className="register-input"
+						className="input"
 					/>
-					<button type="submit" className="register-btn">
+					<button type="submit" className="btn">
 						Registrarse
 					</button>
 				</form>
