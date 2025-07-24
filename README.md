@@ -1,97 +1,71 @@
-# AppBook - Frontend
+# AppBook - Resumen Proyecto IA
 
-## 1. Descripció del model IA seleccionat i motiu de l'elecció
-He utilitzat GitHub Copilot com a assistent d'IA per al desenvolupament del frontend. L'he escollit perquè permet generar codi de manera ràpida, iterativa i adaptada a les meves necessitats, facilitant la creació d'interfícies modernes i la resolució de problemes de disseny i estructura en React.
+## 1. IA seleccionada y motivo
+He utilizado GitHub Copilot como asistente IA para el desarrollo frontend. Lo elegí por su capacidad para generar código rápido, moderno y adaptado a mis necesidades, facilitando la creación de interfaces en React y la resolución de problemas de diseño y estructura.
 
-## 2. Registre de les interaccions amb la IA
-- Vaig demanar ajuda per crear un header fix, professional i responsiu.
-- Vaig sol·licitar inspiració i estructura per al banner principal, ajustant el seu disseny fins aconseguir un resultat atractiu.
-- Vaig demanar que la imatge de portada estigués al costat del text, amb proporcions de llibre i tot centrat.
-- Vaig ajustar la responsivitat, separació i tipografia segons les propostes de la IA.
-- Vaig demanar la creació d'una secció de llibres ficticis, amb portades locals i estructura visual equilibrada.
-- Exemples de preguntes: "Centra el banner i la imatge", "Haz que los libros estén perfectamente alineados", "Genera datos ficticis per als llibres".
-- La IA va respondre amb codi, explicacions i suggeriments visuals per cada pas.
+## 2. Interacciones más interesantes con la IA
 
-## 3. Anàlisi del codi generat per la IA
+### Home
+- ¿Cómo crear un header fixe, professional i responsiu?
+- ¿Com dissenyar un banner atractiu i modern amb fons degradat?
+- ¿Com generar llibres ficticis i alinear-los perfectament a la quadrícula?
+
+### Book
+- ¿Com organitzar els llibres per gèneres i mostrar una secció amb tots els llibres?
+- ¿Com centrar i alinear els llibres a cada secció?
+- ¿Com navegar entre Home i Book utilitzant React Router?
+
+### Register
+- ¿Com fer que el registre funcioni només en frontend utilitzant localStorage?
+- ¿Com mostrar un missatge d'èxit i redirigir automàticament al login?
+
+### Login
+- ¿Com validar el login contra els usuaris desats a localStorage?
+- ¿Com mostrar l'usuari loguejat al header i permetre tancar sessió?
+
+### Organització i estructura
+- ¿Com centralitzar els estils i components perquè siguin reutilitzables?
+- ¿Com organitzar el projecte en carpetes per a una major neteja i manteniment?
+- ¿Com simular la connexió amb una API i preparar el frontend per integrar-se amb un backend real?
+
+### Exemple de codi generat
+```js
+// Registro
+saveUserToLocalStorage(user);
+setSuccess(true);
+setTimeout(() => navigate('/login'), 1200);
+
+// Login
+const found = users.find(u => u.username === username && u.password === password);
+if (found) setCurrentUser(found);
+```
+
+## 3. Anàlisi del codi generat
 - El codi generat és modular, clar i fàcilment personalitzable.
-- S'utilitzen components funcionals de React, hooks (`useState`, `useEffect`) i CSS modern (flex, grid, media queries).
-- Es va adaptar el codi per utilitzar només imatges locals i dades fictícies, assegurant coherència visual i funcionalitat sense backend real.
-- Es van fer petits ajustos manuals per millorar la responsivitat i l'alineació dels elements.
+- S'utilitzen components funcionals, hooks (`useState`, `useEffect`), React Router i CSS modern.
+- Es van centralitzar estils i components per facilitar el manteniment i la coherència visual.
+- Es va adaptar el codi per funcionar sense backend, simulant usuaris i sessions en localStorage.
 
-## 4. Descripció del procés de connexió frontend-backend
-- El frontend està preparat per consumir una API RESTful (exemple: crides amb `fetch` o `axios`).
-- Per demostrar la connexió, es va simular una crida a l'API amb dades fictícies, mostrant com es rebrien i renderitzarien els llibres.
-- Si es connecta amb un backend PHP/Laravel real, només caldria substituir la crida mock per l'endpoint real (exemple: `fetch('http://localhost:8000/api/books')`).
-- Reptes: adaptar el codi per funcionar sense backend real i garantir que la interfície sigui flexible per a dades dinàmiques.
+## 4. Connexió frontend-backend
+- El frontend està preparat per consumir una API RESTful (fetch/axios).
+- Es van simular crides a l'API amb dades fictícies, mostrant com s'integrarien els endpoints reals.
+- El codi es pot connectar fàcilment a un backend PHP/Laravel canviant la URL dels endpoints.
+- Reptes: adaptar la interfície per funcionar sense dades reals i garantir flexibilitat per a dades dinàmiques.
 
-## 5. Reflexió sobre el procés d'aprenentatge
-- El procés m'ha permès entendre millor la col·laboració amb IA per desenvolupar interfícies modernes i responsives.
-- He après a iterar ràpidament sobre el disseny, a ajustar detalls visuals i a documentar el procés de manera clara.
-- El repte principal ha estat aconseguir una coherència visual i funcional sense dades reals, però la IA ha facilitat molt la generació de codi i solucions creatives.
+## 5. Reflexió sobre l'aprenentatge
+- He après a iterar ràpidament sobre el disseny i la funcionalitat amb ajuda de la IA.
+- He millorat l'organització del codi i la documentació del procés.
+- El major repte va ser mantenir coherència visual i funcional sense backend, però la IA va facilitar molt la generació de solucions creatives.
 
-# AppBook - Página Book
+## 6. Canvis recents i estructura
+- Es van crear pàgines Home, Book, Login i Register amb la mateixa estructura i estils.
+- Es va implementar un header reutilitzable i formularis moderns.
+- Es van organitzar els fitxers en carpetes (components, pàgines, estils, utils).
+- Es va documentar tot el procés i les interaccions al README.
 
-## Resumen de interacciones interesantes con la IA sobre la página Book
+## 7. Repositori i presentació
+- Tot el codi i la documentació estan disponibles al repositori de GitHub.
+- La presentació inclou exemples visuals, preguntes clau i reflexions sobre el procés.
 
-Durante el desenvolupament de la pàgina Book, aquestes han estat les interaccions més interessants:
-
-- Solicité crear una nova pàgina llamada Book amb la mateixa estructura base que Home, però mostrant llibres per gèneres i una secció de tots els llibres.
-- Pedí que els apartats de llibres estiguessin organitzats per gènere (Fantasy, Romance, Sci-Fi, Mystery) i que al final hi hagués un apartat amb tots els llibres junts.
-- Solicité que els llibres quedessin perfectament centrats a la quadrícula de cada secció.
-- Pedí que la navegació entre Home i Book fos possible des del menú, utilitzant React Router.
-- Es va generar i aplicar un fitxer d'estils específic per a Book, assegurant un disseny net i modern.
-- Es va documentar com tancar la branca de desenvolupament utilitzant git flow després de finalitzar la funcionalitat.
-
-Exemples de preguntes:
-
-- "Vamos a crear la página book, allí tiene el mismo estructura que home, pero la diferencia tiene apartados, donde muestran libros son de un género específico..."
-
-
-
-
-# AppBook - Home Page
-
-## Resumen de la Main Page
-
-La Main Page de AppBook presenta un disseny modern i net, amb un header fix, un banner destacat i una secció de llibres ficticis perfectament alineats. Tot el contingut és responsiu i visualment atractiu, pensat per oferir una experiència agradable tant a escriptors com a lectors. L'estructura facilita la futura integració amb una API real i l'ampliació de funcionalitats.
-
-## Resumen de interacciones interesantes con la IA
-
-Durante el desenvolupament de la Home Page, les interaccions més interessants amb la IA han estat:
-
-- Solicitar la creació i millora d'un header fix, professional i responsiu, ajustant alineació, colors i tipografia.
-- Pedir inspiració i estructura per al banner principal, logrant un disseny atractiu i modern amb fons degradat i elements centrats.
-- Ajustar l'amplada, altura i disposició del banner fins que s'adaptà perfectament a la referència visual.
-- Solicitar la generació de llibres ficticis, utilitzant només imatges locals i dades inventades, per mostrar una secció de llibres realista i visualment coherent.
-- Pedir que els llibres estiguessin perfectament centrats i alineats, amb la mateixa mida i separació a la quadrícula.
-- Iterar sobre la responsivitat i els detalls visuals perquè la pàgina es veiés bé a qualsevol dispositiu.
-
-- Exemples de preguntes: "Crea un header responsiu", "Millora el banner amb un fons degradat", "Genera llibres ficticis amb imatges locals".
-
-# AppBook - Login y Register Pages
-
-## Resumen de los cambios recientes
-
-- Se crearon las páginas Login y Register seguint la mateixa estructura, colors i coherència visual que Home i Book.
-- Se implementó un component `Header` reutilizable, ara present a Home, Book, Login i Register per mantenir la identitat visual en tota l'app.
-- Els formularis de Login i Register utilitzen estils moderns i responsius, amb el mateix fons i tipografia que la resta de l'aplicació.
-- Se reorganitzà el codi perquè el header no estigui duplicat, facilitant el manteniment i la coherència.
-- Se creó una rama feature amb git flow per desenvolupar aquestes pàgines de forma ordenada.
-
-## Exemple de interacción
-
-- "Crea las páginas login y register, pero que tengan el mismo header, estructura y colores que home para que la experiencia sea fluida y coherente."
-
-# Cambios recientes y componentes reutilizables
-
-## Componentes reutilizables
-- Se creó el componente `Header` per al menú superior, usat en totes les pàgines principals.
-- Se creó el componente `BookCard` per mostrar llibres de forma uniforme i reutilitzable en Home i Book.
-
-## Modificaciones importants
-- Se reemplazó el header hardcodeado en Home i Book per el componente `Header`.
-- Se reemplazó la renderización de llibres en Home i Book per el componente `BookCard`.
-- El menú ara resalta dinàmicament la pàgina activa (Home o Books) usando `useLocation` de React Router.
-
-Aquests canvis milloren la coherència visual, el manteniment i l'escalabilitat del projecte.
+---
 

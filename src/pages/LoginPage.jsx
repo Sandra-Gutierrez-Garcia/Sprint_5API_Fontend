@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/Form.css";
 import { getUsersFromLocalStorage, setCurrentUser } from "../utils/userStorage";
@@ -6,6 +7,7 @@ import { getUsersFromLocalStorage, setCurrentUser } from "../utils/userStorage";
 function LoginPage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +23,7 @@ function LoginPage() {
       setSuccess(true);
       setError("");
       form.reset();
+      navigate("/perfil"); // Redirige al perfil tras login exitoso
     } else {
       setError("Usuario o contraseña incorrectos");
       setSuccess(false);
