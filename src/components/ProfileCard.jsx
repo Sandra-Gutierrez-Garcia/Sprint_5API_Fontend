@@ -1,7 +1,7 @@
 import React from "react";
 
 // Estilos
-import "../styles/Form.css";
+import "../styles/writer/Form.css";
 
 function ProfileCard({ title, avatar, fields, actions }) {
   return (

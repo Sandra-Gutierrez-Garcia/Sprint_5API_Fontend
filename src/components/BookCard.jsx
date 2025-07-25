@@ -1,7 +1,7 @@
 import React from "react";
 
 // Estilos
-import "../styles/BookCard.css";
+import "../styles/book/BookCard.css";
 
 // Componente para mostrar la información de un libro
 const BookCard = ({ cover, title, author, description }) => (

@@ -2,10 +2,10 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // Estilos
-import "../styles/Header.css";
+import "../styles/writer/Header.css";
 
 // Utils
-import { getCurrentUser, logoutUser } from "../utils/userStorage";
+import { getCurrentUser, logoutUser } from "../utils/user/userStorage";
 
 const Header = () => {
   const location = useLocation();

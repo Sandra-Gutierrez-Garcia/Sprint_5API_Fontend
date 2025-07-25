@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import BookCard from '../../components/BookCard';
 
 // Estilos
-import './BookPage.css';
+import '../../styles/book/BookPage.css';
 
 // Utils
 import { books, genres } from '../../utils/book/booksData';

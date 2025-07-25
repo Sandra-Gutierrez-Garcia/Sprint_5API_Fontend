@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 
 // Estilos
-import './BookCreatePage.css';
+import '../../styles/book/BookCreatePage.css';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 

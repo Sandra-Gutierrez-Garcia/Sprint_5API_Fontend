@@ -6,10 +6,10 @@ import Header from "../components/Header";
 import BookCard from "../components/BookCard";
 
 // Estilos
-import "../styles/HomePage.css";
+import "../styles/user/HomePage.css";
 
 // Utils
-import { books } from "../utils/booksData";
+import { books } from "../utils/book/booksData";
 
 const HomePage = () => (
   <>
