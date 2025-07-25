@@ -1,8 +1,10 @@
+// utils/booksData.js
 import img1 from '../assets/images/bonfire-9681097_1280.jpg';
 import img2 from '../assets/images/girl-7459130_1280.jpg';
 import img3 from '../assets/images/hall-7986771_1280.jpg';
 import img4 from '../assets/images/spiral-staircase-877834_1280.jpg';
 
+// Array de libros ficticios para mostrar en la app
 export const books = [
   { id: 1, title: "The Lantern’s Tale", author: "Nina Kestrel", cover: img1, genre: "Fantasy", description: "A lantern’s light reveals the truth on the longest night." },
   { id: 2, title: "Firefly Dreams", author: "Owen Marlo", cover: img2, genre: "Romance", description: "A summer of fireflies, wishes, and unexpected friendships." },
@@ -14,4 +16,5 @@ export const books = [
   { id: 8, title: "The Forgotten Melody", author: "Rhea Lark", cover: img4, genre: "Mystery", description: "A melody lost in time, waiting to be found." }
 ];
 
+// Géneros disponibles
 export const genres = ["Fantasy", "Romance", "Sci-Fi", "Mystery"];

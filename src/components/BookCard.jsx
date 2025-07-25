@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/BookCard.css";
 
+// Componente para mostrar la información de un libro
 const BookCard = ({ cover, title, author, description }) => (
   <div className="showcase-book">
     <img src={cover} alt={title} className="showcase-book-img" />

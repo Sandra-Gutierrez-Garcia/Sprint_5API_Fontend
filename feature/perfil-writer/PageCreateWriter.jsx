@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import { saveWriterToLocalStorage } from "../utils/writerStorage";
-import { setCurrentUser, getCurrentUser } from "../utils/userStorage";
-import "../styles/Form.css";
+import Header from "../../components/Header";
+import "../../styles/Form.css";
+import { saveWriterToLocalStorage } from "../../utils/writerStorage";
+import { setCurrentUser, getCurrentUser } from "../../utils/userStorage";
 
 function PageCreateWriter() {
   const [success, setSuccess] = useState(false);
@@ -18,12 +18,10 @@ function PageCreateWriter() {
     setForm(f => ({ ...f, username: currentUser?.username || "" }));
   }, [currentUser]);
 
-  // Actualiza el estado del formulario
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  // Guarda el escritor y navega al perfil de escritor
   function handleSubmit(e) {
     e.preventDefault();
     saveWriterToLocalStorage({ username: currentUser?.username, bio: form.bio });
