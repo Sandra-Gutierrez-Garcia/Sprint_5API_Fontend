@@ -1,14 +1,14 @@
 import React from "react";
 
 // Componentes
-import Header from "../components/Header";
-import BookCard from "../components/BookCard";
+import Header from '../../components/Header';
+import BookCard from '../../components/BookCard';
 
 // Estilos
-import "../styles/BookPage.css";
+import './BookPage.css';
 
 // Utils
-import { books, genres } from "../utils/booksData";
+import { books, genres } from '../../utils/book/booksData';
 
 const BookSection = ({ genre, books }) => (
   <section className="books-section">

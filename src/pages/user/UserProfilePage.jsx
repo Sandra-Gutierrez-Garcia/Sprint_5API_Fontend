@@ -1,18 +1,17 @@
 import React from "react";
 
 // Componentes
-import Header from "../components/Header";
-import BookCard from "../components/BookCard";
-import ProfileCard from "../components/ProfileCard";
+import Header from '../../components/Header';
+import BookCard from '../../components/BookCard';
+import ProfileCard from '../../components/ProfileCard';
 
 // Estilos
-import "../styles/Form.css";
-import "../styles/HomePage.css";
+import '../../styles/user/HomePage.css';
 
 // Utils
-import { getCurrentUser } from "../utils/userStorage";
-import { getWritersFromLocalStorage } from "../utils/writerStorage";
-import { books } from "../utils/booksData";
+import { getCurrentUser } from '../../utils/user/userStorage';
+import { getWritersFromLocalStorage } from '../../utils/writer/writerStorage';
+import { books } from '../../utils/book/booksData';
 
 function UserProfilePage() {
   const user = getCurrentUser();

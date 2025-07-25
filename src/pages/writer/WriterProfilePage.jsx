@@ -2,18 +2,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // Componentes
-import Header from "../components/Header";
-import ProfileCard from "../components/ProfileCard";
-import BookCard from "../components/BookCard";
+import Header from '../../components/Header';
+import ProfileCard from '../../components/ProfileCard';
+import BookCard from '../../components/BookCard';
 
 // Estilos
-import "../styles/Form.css";
-import "../styles/HomePage.css";
+import '../../styles/writer/HomePage.css';
 
 // Utils
-import { getCurrentUser } from "../utils/userStorage";
-import { getWritersFromLocalStorage } from "../utils/writerStorage";
-import { GENRES } from '../utils/bookUtils';
+import { getCurrentUser } from '../../utils/user/userStorage';
+import { getWritersFromLocalStorage } from '../../utils/writer/writerStorage';
+import { GENRES } from '../../utils/book/bookUtils';
 
 function WriterProfilePage() {
   const navigate = useNavigate();

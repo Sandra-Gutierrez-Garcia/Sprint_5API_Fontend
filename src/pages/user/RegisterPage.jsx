@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import "../styles/Form.css";
-import { handleRegisterSubmit } from "../utils/authFormHandlers";
+import Header from '../../components/Header';
+import '../../styles/user/RegisterPage.css';
+import { handleRegisterSubmit } from '../../utils/user/authFormHandlers';
 
 function RegisterPage() {
 	const [success, setSuccess] = useState(false);

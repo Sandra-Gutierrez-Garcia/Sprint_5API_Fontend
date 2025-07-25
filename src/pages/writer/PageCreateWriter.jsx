@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Componentes
-import Header from "../components/Header";
+import Header from '../../components/Header';
 
 // Estilos
-import "../styles/Form.css";
+import '../../styles/writer/Form.css';
 
 // Utils
-import { saveWriterToLocalStorage } from "../utils/writerStorage";
-import { setCurrentUser, getCurrentUser } from "../utils/userStorage";
-import { handleWriterChange, handleWriterSubmit } from "../utils/writerFormHandlers";
+import { saveWriterToLocalStorage } from '../../utils/writer/writerStorage';
+import { setCurrentUser, getCurrentUser } from '../../utils/user/userStorage';
+import { handleWriterChange, handleWriterSubmit } from '../../utils/writer/writerFormHandlers';
 
 function PageCreateWriter() {
   const [success, setSuccess] = useState(false);

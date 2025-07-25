@@ -10,8 +10,8 @@ import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 
 // Utils
-import { getCurrentUser } from '../utils/userStorage';
-import { getWritersFromLocalStorage, saveWriterToLocalStorage } from '../utils/writerStorage';
+import { getCurrentUser } from '../../utils/user/userStorage';
+import { getWritersFromLocalStorage, saveWriterToLocalStorage } from '../../utils/writer/writerStorage';
 import {
   BOOK_CREATE,
   GENRES,
@@ -21,7 +21,7 @@ import {
   handlePageChange,
   handleImageChange,
   saveBookToStorage
-} from '../utils/bookUtils';
+} from '../../utils/book/bookUtils';
 
 export default function BookCreatePage() {
   // --- State ---
