@@ -5,6 +5,7 @@ import BookPage from './pages/book/BookPage'
 import LoginPage from './pages/user/LoginPage'
 import RegisterPage from './pages/user/RegisterPage'
 import UserProfilePage from './pages/user/UserProfilePage'
+import UserProfileEditPage from './pages/user/UserProfileEditPage'
 import PageCreateWriter from './pages/writer/PageCreateWriter'
 import WriterProfilePage from './pages/writer/WriterProfilePage'
 import BookCreatePage from './pages/book/BookCreatePage'
@@ -20,6 +21,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/perfil' element={<UserProfilePage />} />
+        <Route path='/perfil/editar' element={<UserProfileEditPage />} />
         <Route path='/crear-writer' element={<PageCreateWriter />} />
         <Route path='/perfil-writer' element={<WriterProfilePage />} />
         <Route path='/perfil-escritor' element={<WriterProfilePage />} />

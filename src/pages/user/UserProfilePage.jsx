@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 // Componentes
 import Header from '../../components/Header';
@@ -17,6 +18,7 @@ function UserProfilePage() {
   const user = getCurrentUser();
   const writers = getWritersFromLocalStorage();
   const writerProfile = writers.find(w => w.username === user?.username);
+  const navigate = useNavigate();
 
   return (
     <div className="profile-page-bg">
@@ -31,7 +33,7 @@ function UserProfilePage() {
         ]}
         actions={
           <>
-            <button className="profile-save-btn">Editar</button>
+            <button className="profile-save-btn" onClick={() => navigate('/perfil/editar')}>Editar</button>
             <button className="profile-header-btn logout">Cerrar sesión</button>
             {!writerProfile && (
               <a href="/crear-writer" className="profile-header-btn" style={{textDecoration:'none'}}>Crear perfil de escritor</a>
