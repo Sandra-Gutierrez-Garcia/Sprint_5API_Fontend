@@ -7,11 +7,13 @@ import Header from "../../components/Header";
 import BookCard from "../../components/BookCard";
 import ProfileCard from "../../components/ProfileCard";
 import { books } from "../../utils/booksData";
+import { useNavigate } from "react-router-dom";
 
 function WriterProfilePage() {
   const user = getCurrentUser();
   const writers = getWritersFromLocalStorage();
   const writerProfile = writers.find(w => w.username === user?.username);
+  const navigate = useNavigate();
 
   return (
     <div className="profile-page-bg">
@@ -28,6 +30,7 @@ function WriterProfilePage() {
             <button className="profile-save-btn">Editar writer</button>
             <button className="profile-header-btn" style={{background:'#e74c3c', color:'#fff'}}>Eliminar writer</button>
             <button className="profile-header-btn">Volver perfil</button>
+            <button className="profile-header-btn" onClick={() => navigate('/crear-libro')}>Crear libro</button>
           </>
         }
       />

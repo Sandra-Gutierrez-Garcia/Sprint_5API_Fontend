@@ -1,4 +1,6 @@
 import React from "react";
+
+// Estilos
 import "../styles/Form.css";
 
 function ProfileCard({ title, avatar, fields, actions }) {

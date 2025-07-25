@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/HomePage.css";
+
+// Componentes
 import Header from "../components/Header";
 import BookCard from "../components/BookCard";
+
+// Estilos
+import "../styles/HomePage.css";
+
+// Utils
 import { books } from "../utils/booksData";
 
 const HomePage = () => (

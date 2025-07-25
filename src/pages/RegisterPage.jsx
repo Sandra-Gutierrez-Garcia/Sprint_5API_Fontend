@@ -2,27 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/Form.css";
-import { saveUserToLocalStorage } from "../utils/userStorage";
+import { handleRegisterSubmit } from "../utils/authFormHandlers";
 
 function RegisterPage() {
 	const [success, setSuccess] = useState(false);
 	const navigate = useNavigate();
-
-	function handleSubmit(e) {
-		e.preventDefault();
-		const form = e.target;
-		const user = {
-			username: form[0].value,
-			email: form[1].value,
-			password: form[2].value
-		};
-		saveUserToLocalStorage(user);
-		setSuccess(true);
-		form.reset();
-		setTimeout(() => {
-			navigate("/login");
-		}, 1200);
-	}
 
 	return (
 		<div className="registerpage-new">
@@ -38,7 +22,7 @@ function RegisterPage() {
 			</section>
 			<section className="form-section">
 				<h2 className="form-title">Crea tu cuenta</h2>
-				<form className="form" onSubmit={handleSubmit}>
+				<form className="form" onSubmit={e => handleRegisterSubmit(e, setSuccess, navigate)}>
 					<input type="text" placeholder="Usuario" className="input" required />
 					<input type="email" placeholder="Email" className="input" required />
 					<input type="password" placeholder="Contraseña" className="input" required />

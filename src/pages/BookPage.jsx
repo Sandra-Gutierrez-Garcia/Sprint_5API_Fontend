@@ -1,7 +1,13 @@
 import React from "react";
-import "../styles/BookPage.css";
+
+// Componentes
 import Header from "../components/Header";
 import BookCard from "../components/BookCard";
+
+// Estilos
+import "../styles/BookPage.css";
+
+// Utils
 import { books, genres } from "../utils/booksData";
 
 const BookSection = ({ genre, books }) => (

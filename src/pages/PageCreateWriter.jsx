@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Componentes
 import Header from "../components/Header";
+
+// Estilos
+import "../styles/Form.css";
+
+// Utils
 import { saveWriterToLocalStorage } from "../utils/writerStorage";
 import { setCurrentUser, getCurrentUser } from "../utils/userStorage";
-import "../styles/Form.css";
+import { handleWriterChange, handleWriterSubmit } from "../utils/writerFormHandlers";
 
 function PageCreateWriter() {
   const [success, setSuccess] = useState(false);
@@ -18,24 +25,6 @@ function PageCreateWriter() {
     setForm(f => ({ ...f, username: currentUser?.username || "" }));
   }, [currentUser]);
 
-  // Actualiza el estado del formulario
-  function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
-
-  // Guarda el escritor y navega al perfil de escritor
-  function handleSubmit(e) {
-    e.preventDefault();
-    saveWriterToLocalStorage({ username: currentUser?.username, bio: form.bio });
-    setCurrentUser({ ...currentUser, writerProfile: true });
-    setSuccess(true);
-    setTimeout(() => {
-      setSuccess(false);
-      navigate("/perfil-writer");
-    }, 1200);
-    setForm({ username: currentUser?.username || "", bio: "" });
-  }
-
   return (
     <div className="loginpage-new">
       <Header />
@@ -49,9 +38,9 @@ function PageCreateWriter() {
       </section>
       <section className="form-section">
         <h2 className="form-title">Datos del escritor</h2>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={e => handleWriterSubmit(e, form, currentUser, setSuccess, setForm, saveWriterToLocalStorage, setCurrentUser, navigate)}>
           <input type="text" name="username" placeholder="Usuario" className="input" value={form.username} disabled />
-          <input type="text" name="bio" placeholder="Biografía corta" className="input" value={form.bio} onChange={handleChange} required />
+          <input type="text" name="bio" placeholder="Biografía corta" className="input" value={form.bio} onChange={e => handleWriterChange(e, setForm)} required />
           <button type="submit" className="btn">Crear escritor</button>
         </form>
         {success && (

@@ -1,4 +1,6 @@
 import React from "react";
+
+// Estilos
 import "../styles/BookCard.css";
 
 // Componente para mostrar la información de un libro

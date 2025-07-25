@@ -18,3 +18,14 @@ export const books = [
 
 // Géneros disponibles
 export const genres = ["Fantasy", "Romance", "Sci-Fi", "Mystery"];
+
+// Estructura de un libro para creación
+export const BOOK_CREATE = {
+  id: 0,
+  title: '',
+  author: '',
+  cover: '',
+  genre: '',
+  description: '',
+  // Puedes agregar más campos si tu app lo requiere
+};

@@ -7,6 +7,7 @@ import RegisterPage from './pages/RegisterPage'
 import UserProfilePage from './pages/UserProfilePage'
 import PageCreateWriter from './pages/PageCreateWriter'
 import WriterProfilePage from './pages/WriterProfilePage'
+import BookCreatePage from './pages/BookCreatePage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         <Route path='/perfil' element={<UserProfilePage />} />
         <Route path='/crear-writer' element={<PageCreateWriter />} />
         <Route path='/perfil-writer' element={<WriterProfilePage />} />
+        <Route path='/perfil-escritor' element={<WriterProfilePage />} />
+        <Route path='/crear-libro' element={<BookCreatePage />} />
       </Routes>
     </Router>
   )

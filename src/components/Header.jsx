@@ -1,6 +1,10 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+// Estilos
 import "../styles/Header.css";
+
+// Utils
 import { getCurrentUser, logoutUser } from "../utils/userStorage";
 
 const Header = () => {
