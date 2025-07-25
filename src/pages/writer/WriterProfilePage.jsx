@@ -24,6 +24,15 @@ function WriterProfilePage() {
   const allBooks = JSON.parse(localStorage.getItem('books') || '[]');
   const writerBooks = allBooks.filter(b => b.author === user?.username);
 
+  // Handler para eliminar libro
+  const handleDeleteBook = (bookId) => {
+    if(window.confirm('¿Seguro que quieres eliminar este libro?')) {
+      const updatedBooks = allBooks.filter(b => String(b.id) !== String(bookId));
+      localStorage.setItem('books', JSON.stringify(updatedBooks));
+      navigate(0); // recarga la página para actualizar la lista
+    }
+  };
+
   if (!writerProfile) {
     return (
       <div className="profile-page-bg">
@@ -74,6 +83,7 @@ function WriterProfilePage() {
                 author={book.author}
                 description={book.description || ""}
                 onEdit={() => navigate(`/book/edit/${book.id}`)}
+                onDelete={() => handleDeleteBook(book.id)}
               />
             ))}
           </div>
