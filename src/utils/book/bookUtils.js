@@ -61,10 +61,35 @@ export function handleImageChange(e, book, setBook) {
 
 export function saveBookToStorage(book) {
   const books = JSON.parse(localStorage.getItem('books')) || [];
-  books.push(book);
+  // Asignar un id único incremental si no existe
+  let newId = 1;
+  if (books.length > 0) {
+    const maxId = Math.max(...books.map(b => Number(b.id) || 0));
+    newId = maxId + 1;
+  }
+  const bookToSave = { ...book };
+  if (!bookToSave.id || bookToSave.id === 0) {
+    bookToSave.id = newId;
+  }
+  books.push(bookToSave);
   localStorage.setItem('books', JSON.stringify(books));
+  return bookToSave.id;
 }
 
 export function getBooksFromStorage() {
   return JSON.parse(localStorage.getItem('books')) || [];
+}
+
+export function getBookById(id) {
+  const books = getBooksFromStorage();
+  return books.find(b => String(b.id) === String(id));
+}
+
+export function updateBookInStorage(updatedBook) {
+  const books = getBooksFromStorage();
+  const idx = books.findIndex(b => String(b.id) === String(updatedBook.id));
+  if (idx !== -1) {
+    books[idx] = updatedBook;
+    localStorage.setItem('books', JSON.stringify(books));
+  }
 }

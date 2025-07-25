@@ -67,7 +67,14 @@ function WriterProfilePage() {
           <div className="user-fav-books-list">
             {writerBooks.length === 0 && <p style={{color:'#888'}}>No has creado ningún libro aún.</p>}
             {writerBooks.map(book => (
-              <BookCard key={book.id || book.title} cover={book.image || book.cover} title={book.title} author={book.author} description={book.description || ""} />
+              <BookCard
+                key={book.id || book.title}
+                cover={book.image || book.cover}
+                title={book.title}
+                author={book.author}
+                description={book.description || ""}
+                onEdit={() => navigate(`/book/edit/${book.id}`)}
+              />
             ))}
           </div>
         </section>

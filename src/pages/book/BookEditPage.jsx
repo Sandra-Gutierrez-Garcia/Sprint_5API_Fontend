@@ -1,59 +1,70 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-// Componentes
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
-
-// Estilos
 import '../../styles/book/BookCreatePage.css';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
-
-// Utils
 import { getCurrentUser } from '../../utils/user/userStorage';
 import { getWritersFromLocalStorage, saveWriterToLocalStorage } from '../../utils/writer/writerStorage';
 import {
-  BOOK_CREATE,
-  GENRES,
   handleChange,
   handleContentChange,
   handleAddPage,
   handlePageChange,
   handleImageChange,
-  saveBookToStorage
+  getBookById,
+  updateBookInStorage
 } from '../../utils/book/bookUtils';
 
-export default function BookCreatePage() {
-  // --- State ---
-  const [book, setBook] = useState(BOOK_CREATE);
+export default function BookEditPage() {
+  const { bookId } = useParams();
+  const [book, setBook] = useState(null);
   const [success, setSuccess] = useState(false);
   const [pages, setPages] = useState(['']);
   const [currentPage, setCurrentPage] = useState(0);
-  const [showGenres, setShowGenres] = useState(false);
   const [showPages, setShowPages] = useState(false);
   const navigate = useNavigate();
   const user = getCurrentUser();
 
-  const handleSave = () => {
-    // Asignar autor automáticamente
-    const bookToSave = { ...book, author: user?.username || '', pages };
-    const id = saveBookToStorage(bookToSave);
-    setBook(BOOK_CREATE);
-    setSuccess(true);
-    setTimeout(() => setSuccess(false), 2000);
-    // Redirigir a la página del writer después de guardar
-    if (id) navigate('/perfil-writer');
-  };
+  useEffect(() => {
+    const fetchedBook = getBookById(bookId);
+    if (!fetchedBook) {
+      navigate('/perfil-writer');
+      return;
+    }
+    setBook(fetchedBook);
+    // Si el libro tiene pages, usarlas; si no, intentar recuperar de content (legacy)
+    if (Array.isArray(fetchedBook.pages) && fetchedBook.pages.length > 0) {
+      setPages(fetchedBook.pages);
+    } else if (typeof fetchedBook.content === 'string' && fetchedBook.content.length > 0) {
+      setPages([fetchedBook.content]);
+    } else {
+      setPages(['']);
+    }
+  }, [bookId, navigate]);
 
-  // --- Render ---
+  // Al editar, el autor siempre es el usuario autenticado
+  useEffect(() => {
+    if (book && user?.username && book.author !== user.username) {
+      setBook(prev => ({ ...prev, author: user.username }));
+    }
+  }, [book, user]);
+
+  if (!book) return <div>Cargando...</div>;
+
   return (
-    <div className="book-create-outer-bg">
-      <div className="book-create-main-card">
+    <>
+      {/* <Header /> eliminado para no molestar en edición */}
+      <div className="book-create-outer-bg">
         <div className="book-create-page-modern">
           <div className="book-create-left">
             <form onSubmit={e => {
               e.preventDefault();
-              handleSave();
+              updateBookInStorage({ ...book, pages });
+              setSuccess(true);
+              setTimeout(() => setSuccess(false), 2000);
+              // Redirigir a la página del writer después de guardar
+              navigate('/perfil-writer');
             }} className="form book-create-form" style={{
               width: '100%',
               maxWidth: 420,
@@ -116,51 +127,14 @@ export default function BookCreatePage() {
                   style={{ width: 120, height: 120, objectFit: 'cover', borderRadius: 14, marginTop: 10, boxShadow: '0 2px 12px #e0e7fa', border:'2px solid #e0e7fa', alignSelf:'center' }}
                 />
               )}
-              <label>
-                Géneros:
-                <div className="genre-dropdown-container">
-                  <button
-                    type="button"
-                    className="genre-dropdown-toggle"
-                    onClick={() => setShowGenres(!showGenres)}
-                  >
-                    {book.genres.length > 0 ? `${book.genres.length} seleccionado(s)` : 'Seleccionar géneros'}
-                    <span className="genre-dropdown-arrow">▼</span>
-                  </button>
-                  {showGenres && (
-                    <div className="genre-checkbox-list genre-dropdown-list">
-                      {GENRES.map((g) => (
-                        <label key={g} className="genre-checkbox-item">
-                          <input
-                            type="checkbox"
-                            value={g}
-                            checked={book.genres.includes(g)}
-                            onChange={e => {
-                              setBook((prev) =>
-                                e.target.checked
-                                  ? { ...prev, genres: [...prev.genres, g] }
-                                  : { ...prev, genres: prev.genres.filter(genre => genre !== g) }
-                              );
-                            }}
-                          />
-                          {g}
-                        </label>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <div className="genre-warning">
-                  Una vez creado el libro <b>no podrás volver a cambiar los géneros</b>.
-                </div>
-              </label>
               <div className="form-buttons-row">
-                <button type="submit">Guardar Libro</button>
+                <button type="submit">Guardar Cambios</button>
                 <button type="button" className="cancel-book-btn" onClick={() => {
                   navigate('/perfil-writer');
                 }}>Cancelar</button>
               </div>
             </form>
-            {success && <p className="success-message">¡Libro guardado!</p>}
+            {success && <p className="success-message">¡Cambios guardados!</p>}
           </div>
           <div className="book-create-right">
             <div className="book-content-label">Contenido del libro</div>
@@ -194,12 +168,12 @@ export default function BookCreatePage() {
               onChange={value => handleContentChange(value, currentPage, setPages)}
               height={350}
               preview="edit"
-              placeholder="Escribe aquí el contenido principal de tu libro..."
+              placeholder="Edita aquí el contenido principal de tu libro..."
               style={{ width: '90%', maxWidth: 700, margin: '0 auto', borderRadius: 18, background: '#fff', boxShadow: '0 2px 12px #e0e7fa', padding: '18px 18px 10px 18px' }}
             />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
