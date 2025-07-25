@@ -34,24 +34,42 @@ Moltes de les interaccions més útils van ser processos guiats, on jo explicava
 - **Procés iteratiu i personalitzat:**
   - Sovint, anava detallant pas a pas (“ara afegeix un botó”, “ara fes que el text sigui més gran”, etc.) i la IA adaptava el codi segons les meves instruccions, permetent un desenvolupament molt àgil i a mida.
 
-Aquest estil de col·laboració va fer que el desenvolupament fos molt més ràpid, personalitzat i alineat amb el que realment volia aconseguir.
+    - Aquest estil de col·laboració va fer que el desenvolupament fos molt més ràpid, personalitzat i alineat amb el que realment volia aconseguir.
 
-### Exemple de preguntes i respostes
-- ¿Com crear un header fixe, professional i responsiu?
-- ¿Com dissenyar un banner atractiu i modern amb fons degradat?
-- ¿Com generar llibres ficticis i alinear-los perfectament a la quadrícula?
-- ¿Com organitzar els llibres per gèneres i mostrar una secció amb tots els llibres?
-- ¿Com navegar entre Home i Book utilitzant React Router?
-- ¿Com fer que el registre funcioni només en frontend utilitzant localStorage?
-- ¿Com mostrar un missatge d'èxit i redirigir automàticament al login?
-- ¿Com validar el login contra els usuaris desats a localStorage?
-- ¿Com mostrar l'usuari loguejat al header i permetre tancar sessió?
-- ¿Com centralitzar els estils i components perquè siguin reutilitzables?
-- ¿Com organitzar el projecte en carpetes per a una major neteja i manteniment?
-- ¿Com simular la connexió amb una API i preparar el frontend per integrar-se amb un backend real?
-- ¿Com reestructurar el projecte per tenir subcarpetes per book, writer i user dins de pages, styles i utils?
-- ¿Com actualitzar automàticament tots els imports després de reorganitzar l'estructura?
-- ¿Com netejar i revisar tots els arxius per garantir que només s'importin dependències necessàries?
+
+- **Edició de llibre o usuari des del frontend:**
+  - Exemple: “Vull editar la informació d’un llibre o d’un usuari directament des de la interfície, sense backend.”
+  - Resposta IA: Proposta de funcions per actualitzar l’objecte corresponent en el localStorage i refrescar l’estat del component, tot gestionant-ho des del frontend.
+    ```js
+    // Editar llibre (frontend)
+    const handleEditBook = (bookId, updatedBook) => {
+      updateBookInLocalStorage(bookId, updatedBook);
+      setBooks(getBooksFromLocalStorage());
+    };
+
+    // Editar usuari (frontend)
+    const handleEditUser = (updatedUser) => {
+      updateUserInLocalStorage(updatedUser);
+      setCurrentUser(updatedUser);
+    };
+    ```
+    - Així, qualsevol canvi realitzat a través dels formularis d’edició es reflecteix immediatament a la interfície, simulant el comportament d’una aplicació real tot i treballar només amb dades locals.
+
+- **Generació de codi per a funcionalitats específiques:**
+  - Jo especificava una funcionalitat concreta, com ara el registre d'usuaris o la navegació entre pàgines, i la IA generava el codi necessari per implementar-ho.  
+
+  - Exemple: “Vull implementar un formulari de registre que emmagatzemi l'usuari al localStorage i redirigeixi a la pàgina de login.”
+  - Resposta IA: Generació del codi per al formulari, gestió de l'estat i la redirecció utilitzant React Router.
+    ```js
+    // Formulari de registre
+    const handleRegister = (e) => {
+      e.preventDefault();
+      const newUser = { username, email, password };
+      saveUserToLocalStorage(newUser);
+      setSuccess(true);
+      setTimeout(() => navigate('/login'), 1200);
+    };
+
 
 #### Exemple de codi generat
 ```js
@@ -63,6 +81,27 @@ setTimeout(() => navigate('/login'), 1200);
 // Login
 const found = users.find(u => u.username === username && u.password === password);
 if (found) setCurrentUser(found);
+
+// Edició de llibre
+const handleEdit = (bookId, newData) => {
+  updateBookInLocalStorage(bookId, newData);
+  setBooks(getBooksFromLocalStorage());
+};
+
+// Eliminació de llibre
+const handleDelete = (bookId) => {
+  deleteBookFromLocalStorage(bookId);
+  setBooks(getBooksFromLocalStorage());
+};
+
+// Edició de perfil d'usuari
+const handleSave = (e) => {
+  e.preventDefault();
+  setCurrentUser({ ...user, username, email, password });
+  navigate("/perfil");
+};
+
+**conclusions sobre les interaccions**
 ```
 - També veia que si no detallava bé les explicacions, la IA no generava el codi correcte. Per exemple, si no especificava que volia un botó amb un color específic o un text concret, la IA podia generar alguna cosa genèrica que no s'ajustava a les meves necessitats.
 - També per ajudar a que la IA entengués millor, era útil explicar per petits passos. Exemple: "Ara afegeix un botó", "Ara fes que el text sigui més gran", etc., després si havia de millorar, explicava detalladament el que volia canviar o afegir.
@@ -94,10 +133,10 @@ if (found) setCurrentUser(found);
 - Es va implementar un header reutilitzable i formularis moderns.
 - Es van organitzar els fitxers en carpetes (components, pàgines, estils, utils).
 - Es va documentar tot el procés i les interaccions al README.
+- S'ha afegit la funcionalitat per editar i eliminar llibres directament des de la interfície, amb actualització automàtica de la llista.
+- S'ha implementat la pàgina d'edició de perfil d'usuari, permetent canviar nom, email i contrasenya amb el mateix estil modern que la vista de perfil.
 
-## 7. Repositori i presentació
-- Tot el codi i la documentació estan disponibles al repositori de GitHub.
-- La presentació inclou exemples visuals, preguntes clau i reflexions sobre el procés.
+
 
 ---
 
