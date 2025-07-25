@@ -1,70 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { useBookEdit, handleEditSubmit } from '../../utils/book/bookEditHandlers';
 import MDEditor from '@uiw/react-md-editor';
 import '../../styles/book/BookCreatePage.css';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
-import { getCurrentUser } from '../../utils/user/userStorage';
-import { getWritersFromLocalStorage, saveWriterToLocalStorage } from '../../utils/writer/writerStorage';
 import {
   handleChange,
   handleContentChange,
   handleAddPage,
   handlePageChange,
-  handleImageChange,
-  getBookById,
-  updateBookInStorage
+  handleImageChange
 } from '../../utils/book/bookUtils';
 
 export default function BookEditPage() {
-  const { bookId } = useParams();
-  const [book, setBook] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [pages, setPages] = useState(['']);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [showPages, setShowPages] = useState(false);
-  const navigate = useNavigate();
-  const user = getCurrentUser();
-
-  useEffect(() => {
-    const fetchedBook = getBookById(bookId);
-    if (!fetchedBook) {
-      navigate('/perfil-writer');
-      return;
-    }
-    setBook(fetchedBook);
-    // Si el libro tiene pages, usarlas; si no, intentar recuperar de content (legacy)
-    if (Array.isArray(fetchedBook.pages) && fetchedBook.pages.length > 0) {
-      setPages(fetchedBook.pages);
-    } else if (typeof fetchedBook.content === 'string' && fetchedBook.content.length > 0) {
-      setPages([fetchedBook.content]);
-    } else {
-      setPages(['']);
-    }
-  }, [bookId, navigate]);
-
-  // Al editar, el autor siempre es el usuario autenticado
-  useEffect(() => {
-    if (book && user?.username && book.author !== user.username) {
-      setBook(prev => ({ ...prev, author: user.username }));
-    }
-  }, [book, user]);
+  const {
+    book, setBook, pages, setPages, currentPage, setCurrentPage, showPages, setShowPages, success, setSuccess, navigate, user
+  } = useBookEdit();
 
   if (!book) return <div>Cargando...</div>;
 
   return (
     <>
-      {/* <Header /> eliminado para no molestar en edición */}
       <div className="book-create-outer-bg">
         <div className="book-create-page-modern">
           <div className="book-create-left">
             <form onSubmit={e => {
               e.preventDefault();
-              updateBookInStorage({ ...book, pages });
-              setSuccess(true);
-              setTimeout(() => setSuccess(false), 2000);
-              // Redirigir a la página del writer después de guardar
-              navigate('/perfil-writer');
+              handleEditSubmit({ book, pages, setSuccess, navigate });
             }} className="form book-create-form" style={{
               width: '100%',
               maxWidth: 420,
