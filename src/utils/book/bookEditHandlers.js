@@ -42,7 +42,14 @@ export function useBookEdit() {
 }
 
 export function handleEditSubmit({ book, pages, setSuccess, navigate }) {
-  updateBookInStorage({ ...book, pages });
+  // No permitir modificar idwriter
+  const original = getBookById(book.id);
+  const bookToUpdate = {
+    ...book,
+    idwriter: original?.idwriter ?? book.idwriter,
+    pages
+  };
+  updateBookInStorage(bookToUpdate);
   setSuccess(true);
   setTimeout(() => setSuccess(false), 2000);
   navigate('/perfil-writer');

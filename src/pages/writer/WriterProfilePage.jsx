@@ -20,9 +20,9 @@ function WriterProfilePage() {
   const writers = getWritersFromLocalStorage();
   const writerProfile = writers.find(w => w.iduser === user?.id);
 
-  // Filtrar solo los libros creados por este escritor
+  // Filtrar solo los libros creados por este escritor usando idwriter
   const allBooks = JSON.parse(localStorage.getItem('books') || '[]');
-  const writerBooks = allBooks.filter(b => b.author === user?.username);
+  const writerBooks = allBooks.filter(b => b.idwriter === writerProfile?.idwriter);
 
   // Handler para eliminar libro
   const handleDeleteBook = (bookId) => {

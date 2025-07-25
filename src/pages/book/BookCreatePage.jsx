@@ -35,8 +35,16 @@ export default function BookCreatePage() {
   const user = getCurrentUser();
 
   const handleSave = () => {
-    // Asignar autor automáticamente
-    const bookToSave = { ...book, author: user?.username || '', pages };
+    // Obtener writer actual por iduser
+    const writers = getWritersFromLocalStorage();
+    const writer = writers.find(w => w.iduser === user?.id);
+    // Asignar autor y idwriter automáticamente
+    const bookToSave = {
+      ...book,
+      author: user?.username || '',
+      idwriter: writer?.idwriter || null, // Vinculación por idwriter
+      pages
+    };
     const id = saveBookToStorage(bookToSave);
     setBook(BOOK_CREATE);
     setSuccess(true);

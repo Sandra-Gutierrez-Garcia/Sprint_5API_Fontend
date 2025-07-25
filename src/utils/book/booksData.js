@@ -28,4 +28,5 @@ export const BOOK_CREATE = {
   genre: '',
   description: '',
   // Puedes agregar más campos si tu app lo requiere
+  idwriter: null, // Nuevo campo para vincular con el writer
 };
