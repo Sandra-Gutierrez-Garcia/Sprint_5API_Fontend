@@ -48,9 +48,9 @@ function WriterProfilePage() {
   // Acciones del perfil
   const actions = (
     <>
-      <button className="profile-save-btn" onClick={() => {/* lógica de edición */}}>Editar writer</button>
+      <button className="profile-save-btn" onClick={() => navigate('/perfil-writer/editar')}>Editar writer</button>
       <button className="profile-header-btn" style={{background:'#e74c3c', color:'#fff'}} onClick={() => {
-        const updatedWriters = writers.filter(w => w.username !== user?.username);
+        const updatedWriters = writers.filter(w => w.iduser !== user?.id);
         localStorage.setItem('writers', JSON.stringify(updatedWriters));
         navigate('/perfil');
       }}>Eliminar writer</button>
