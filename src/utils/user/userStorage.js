@@ -26,3 +26,15 @@ export function getCurrentUser() {
 export function logoutUser() {
   localStorage.removeItem('currentUser');
 }
+
+// Crea un nuevo usuario con id único, username, correo y contraseña
+export function createUser({ username, email, password }) {
+  // Generar un id único (puedes mejorar esto según tus necesidades)
+  const id = Date.now();
+  return {
+    id,
+    username,
+    email, // Usar 'email' como clave
+    password, // Usar 'password' como clave
+  };
+}

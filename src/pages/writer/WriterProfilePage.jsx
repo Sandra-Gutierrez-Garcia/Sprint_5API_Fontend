@@ -18,7 +18,7 @@ function WriterProfilePage() {
   const navigate = useNavigate();
   const user = getCurrentUser();
   const writers = getWritersFromLocalStorage();
-  const writerProfile = writers.find(w => w.username === user?.username);
+  const writerProfile = writers.find(w => w.iduser === user?.id);
 
   // Filtrar solo los libros creados por este escritor
   const allBooks = JSON.parse(localStorage.getItem('books') || '[]');
@@ -64,7 +64,7 @@ function WriterProfilePage() {
       <ProfileCard
         title="Perfil de escritor"
         avatar={<span role="img" aria-label="avatar">📝</span>}
-        fields={[{ label: "Usuario", value: writerProfile?.username || '-' }, { label: "Biografía", value: writerProfile?.bio || '-' }]}
+        fields={[{ label: "Usuario", value: writerProfile?.username || '-' }, { label: "Biografía", value: writerProfile?.biografia || '-' }]}
         actions={actions}
       />
       <div className="registerpage-new">

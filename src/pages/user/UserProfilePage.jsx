@@ -17,7 +17,7 @@ import { books } from '../../utils/book/booksData';
 function UserProfilePage() {
   const user = getCurrentUser();
   const writers = getWritersFromLocalStorage();
-  const writerProfile = writers.find(w => w.username === user?.username);
+  const writerProfile = writers.find(w => w.iduser === user?.id);
   const navigate = useNavigate();
 
   return (

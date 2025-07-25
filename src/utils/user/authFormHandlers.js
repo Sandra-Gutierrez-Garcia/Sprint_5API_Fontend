@@ -1,7 +1,7 @@
 // src/utils/authFormHandlers.js
 // Handlers centralizados para formularios de login y registro
 
-import { getUsersFromLocalStorage, setCurrentUser, saveUserToLocalStorage } from "./userStorage";
+import { getUsersFromLocalStorage, setCurrentUser, saveUserToLocalStorage, createUser } from "./userStorage";
 
 export function handleLoginSubmit(e, setError, setSuccess, navigate) {
   e.preventDefault();
@@ -27,11 +27,11 @@ export function handleLoginSubmit(e, setError, setSuccess, navigate) {
 export function handleRegisterSubmit(e, setSuccess, navigate) {
   e.preventDefault();
   const form = e.target;
-  const user = {
+  const user = createUser({
     username: form[0].value,
     email: form[1].value,
     password: form[2].value
-  };
+  });
   saveUserToLocalStorage(user);
   setSuccess(true);
   form.reset();

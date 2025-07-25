@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Componentes
@@ -20,10 +20,6 @@ function PageCreateWriter() {
     bio: ""
   });
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setForm(f => ({ ...f, username: currentUser?.username || "" }));
-  }, [currentUser]);
 
   return (
     <div className="loginpage-new">

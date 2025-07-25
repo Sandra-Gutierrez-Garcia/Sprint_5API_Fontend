@@ -13,7 +13,12 @@ function UserProfileEditPage() {
 
   const handleSave = (e) => {
     e.preventDefault();
+    // Mantener el id original del usuario
     setCurrentUser({ ...user, username, email, password });
+    // Actualizar también el usuario en la lista de usuarios
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const updatedUsers = users.map(u => u.id === user.id ? { ...u, username, email, password } : u);
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
     navigate("/perfil");
   };
 
