@@ -11,7 +11,7 @@ import '../../styles/writer/HomePage.css';
 
 // Utils
 import { getCurrentUser } from '../../utils/user/userStorage';
-import { getWritersFromLocalStorage } from '../../utils/writer/writerStorage';
+import { getWritersFromLocalStorage, deleteWriterByIduser } from '../../utils/writer/writerStorage';
 import { GENRES } from '../../utils/book/bookUtils';
 
 function WriterProfilePage() {
@@ -33,6 +33,14 @@ function WriterProfilePage() {
     }
   };
 
+  // Handler para eliminar writer
+  const handleDeleteWriter = () => {
+    if(window.confirm('¿Seguro que quieres eliminar tu perfil de escritor? Esto eliminará también todos tus libros.')) {
+      deleteWriterByIduser(user?.id);
+      navigate('/perfil');
+    }
+  };
+
   if (!writerProfile) {
     return (
       <div className="profile-page-bg">
@@ -49,11 +57,7 @@ function WriterProfilePage() {
   const actions = (
     <>
       <button className="profile-save-btn" onClick={() => navigate('/perfil-writer/editar')}>Editar writer</button>
-      <button className="profile-header-btn" style={{background:'#e74c3c', color:'#fff'}} onClick={() => {
-        const updatedWriters = writers.filter(w => w.iduser !== user?.id);
-        localStorage.setItem('writers', JSON.stringify(updatedWriters));
-        navigate('/perfil');
-      }}>Eliminar writer</button>
+      <button className="profile-header-btn" style={{background:'#e74c3c', color:'#fff'}} onClick={handleDeleteWriter}>Eliminar writer</button>
       <button className="profile-header-btn" onClick={() => navigate('/perfil')}>Volver perfil</button>
     </>
   );
