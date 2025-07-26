@@ -12,13 +12,14 @@ import '../../styles/user/HomePage.css';
 // Utils
 import { getCurrentUser } from '../../utils/user/userStorage';
 import { getWritersFromLocalStorage } from '../../utils/writer/writerStorage';
-import { books } from '../../utils/book/booksData';
+import { getFavoriteBooks } from '../../utils/book/favoriteBooks';
 
 function UserProfilePage() {
   const user = getCurrentUser();
   const writers = getWritersFromLocalStorage();
   const writerProfile = writers.find(w => w.iduser === user?.id);
   const navigate = useNavigate();
+  const favoriteBooks = getFavoriteBooks();
 
   return (
     <div className="profile-page-bg">
@@ -48,9 +49,10 @@ function UserProfilePage() {
         <section className="user-fav-books-section">
           <h2 className="fav-books-title">Libros preferidos</h2>
           <div className="user-fav-books-list">
-            <BookCard {...books[0]} />
-            <BookCard {...books[1]} />
-            {/* Puedes agregar más BookCard aquí */}
+            {favoriteBooks.length === 0 && <div style={{color:'#888', fontSize:'1.05rem', padding:'18px 0'}}>No tienes libros guardados en favoritos.</div>}
+            {favoriteBooks.map(book => (
+              <BookCard key={book.id} {...book} />
+            ))}
           </div>
         </section>
       </div>

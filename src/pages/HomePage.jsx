@@ -28,7 +28,7 @@ const HomePage = () => {
         <h2 className="books-showcase-title">Books Showcase</h2>
         <div className="books-list">
           {books.slice(0, 4).map(book => (
-            <BookCard key={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description} hideStatus />
+            <BookCard key={book.id} id={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description} hideStatus hideRead />
           ))}
         </div>
       </div>

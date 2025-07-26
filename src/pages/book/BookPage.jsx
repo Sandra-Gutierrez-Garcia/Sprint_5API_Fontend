@@ -16,7 +16,7 @@ const BookSection = ({ genre, books }) => (
     <h2>{genre}</h2>
     <div className="books-list">
       {books.map(book => (
-        <BookCard key={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description || ""} />
+        <BookCard key={book.id} id={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description || ""} />
       ))}
     </div>
   </section>
@@ -85,7 +85,7 @@ const BookPage = () => {
               <h2>Todos los libros</h2>
               <div className="books-list">
                 {filteredBooks.map(book => (
-                  <BookCard key={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description || ""} genres={book.genres} hideStatus />
+                  <BookCard key={book.id} id={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description || ""} genres={book.genres} hideStatus hideRead />
                 ))}
               </div>
             </section>

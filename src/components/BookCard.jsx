@@ -4,7 +4,7 @@ import React from "react";
 import "../styles/book/BookCard.css";
 
 // Componente para mostrar la información de un libro
-const BookCard = ({ cover, title, author, description, status, genres, onEdit, onDelete, hideStatus }) => (
+const BookCard = ({ cover, title, author, description, status, genres, onEdit, onDelete, hideStatus, id, hideRead }) => (
   <div className="showcase-book">
     <img src={cover} alt={title} className="showcase-book-img" />
     <div className="showcase-book-info">
@@ -22,6 +22,34 @@ const BookCard = ({ cover, title, author, description, status, genres, onEdit, o
         </div>
       )}
       <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+        <a href={`/book/${id}`} style={{
+          background: '#f8fafc',
+          color: '#2d3a4a',
+          border: '1.5px solid #e0e7fa',
+          borderRadius: 8,
+          padding: '6px 18px',
+          fontWeight: 600,
+          fontSize: '1.01rem',
+          textDecoration: 'none',
+          boxShadow: '0 1px 4px #e0e7fa',
+          transition: 'background 0.2s',
+          letterSpacing: '0.01em',
+        }}>Show</a>
+        {!hideRead && (
+          <a href={`/read/${id}`} style={{
+            background: '#e0e7fa',
+            color: '#2d3a4a',
+            border: 'none',
+            borderRadius: 8,
+            padding: '6px 18px',
+            fontWeight: 600,
+            fontSize: '1.01rem',
+            textDecoration: 'none',
+            boxShadow: '0 1px 4px #e0e7fa',
+            transition: 'background 0.2s',
+            letterSpacing: '0.01em',
+          }}>Read</a>
+        )}
         {onEdit && (
           <button
             className="book-edit-btn"
