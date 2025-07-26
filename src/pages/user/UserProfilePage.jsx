@@ -10,7 +10,7 @@ import ProfileCard from '../../components/ProfileCard';
 import '../../styles/user/HomePage.css';
 
 // Utils
-import { getCurrentUser } from '../../utils/user/userStorage';
+import { getCurrentUser, deleteUserById } from '../../utils/user/userStorage';
 import { getWritersFromLocalStorage } from '../../utils/writer/writerStorage';
 import { books } from '../../utils/book/booksData';
 
@@ -19,6 +19,13 @@ function UserProfilePage() {
   const writers = getWritersFromLocalStorage();
   const writerProfile = writers.find(w => w.iduser === user?.id);
   const navigate = useNavigate();
+
+  const handleDeleteUser = () => {
+    if(window.confirm('¿Seguro que quieres eliminar tu cuenta? Se eliminarán también tu perfil de escritor y todos tus libros.')) {
+      deleteUserById(user?.id);
+      navigate('/register');
+    }
+  }
 
   return (
     <div className="profile-page-bg">
@@ -35,6 +42,7 @@ function UserProfilePage() {
           <>
             <button className="profile-save-btn" onClick={() => navigate('/perfil/editar')}>Editar</button>
             <button className="profile-header-btn logout">Cerrar sesión</button>
+            <button className="profile-header-btn" style={{background:'#e74c3c', color:'#fff'}} onClick={handleDeleteUser}>Eliminar usuario</button>
             {!writerProfile && (
               <a href="/crear-writer" className="profile-header-btn" style={{textDecoration:'none'}}>Crear perfil de escritor</a>
             )}

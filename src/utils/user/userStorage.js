@@ -38,3 +38,25 @@ export function createUser({ username, email, password }) {
     password, // Usar 'password' como clave
   };
 }
+
+// Elimina un usuario por su id
+export function deleteUserById(id) {
+  // Eliminar usuario
+  const users = getUsersFromLocalStorage();
+  const updatedUsers = users.filter(u => u.id !== id);
+  localStorage.setItem('users', JSON.stringify(updatedUsers));
+  // Eliminar writer asociado
+  const writers = JSON.parse(localStorage.getItem('writers') || '[]');
+  const writer = writers.find(w => w.iduser === id);
+  if (writer) {
+    // Eliminar libros del writer
+    const books = JSON.parse(localStorage.getItem('books') || '[]');
+    const updatedBooks = books.filter(b => b.idwriter !== writer.idwriter);
+    localStorage.setItem('books', JSON.stringify(updatedBooks));
+    // Eliminar writer
+    const updatedWriters = writers.filter(w => w.iduser !== id);
+    localStorage.setItem('writers', JSON.stringify(updatedWriters));
+  }
+  // Eliminar usuario actual
+  localStorage.removeItem('currentUser');
+}
