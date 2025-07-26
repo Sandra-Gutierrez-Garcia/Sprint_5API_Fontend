@@ -2,7 +2,7 @@
   width: 80vw;
   max-width: 1100px;
   margin: 40px auto 0 auto;
-  background: #fff;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -40,9 +40,11 @@
   border-radius: 4px;
 }
 .header-menu a.active, .header-menu a:hover {
-  color: #e94e77;
-  border-bottom: 2px solid #e94e77;
-  background: #f8e8ee;
+  color: #423885;
+  border-bottom: 2px solid #bfc8e6;
+  background: #f6f7fb;
+  box-shadow: 0 2px 8px 0 rgba(80,80,120,0.07);
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
 }
 .header-actions {
   display: flex;
@@ -53,27 +55,37 @@
   align-items: center;
   padding-right: 0;
 }
-.login-btn,
-.logout-btn {
-  background: linear-gradient(90deg, #e0e7fa 0%, #bfc8e6 100%);
-  color: #4a3c8c;
-  border: none;
-  border-radius: 12px;
-  padding: 12px 32px;
-  font-size: 1.08rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-left: 0;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 6px rgba(80,80,120,0.10);
-  outline: none;
-  min-width: 140px;
-  box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
+button.login-btn,
+button.logout-btn,
+button.register-btn,
+a.login-btn,
+a.logout-btn,
+a.register-btn {
+  background: #fff !important;
+  color: #423885 !important;
+  border: 1.5px solid #d1d3e0 !important;
+  border-radius: 999px !important;
+  padding: 0.45em 1.1em !important;
+  font-size: 1rem !important;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  transition: background 0.2s, color 0.2s, border 0.2s !important;
+  cursor: pointer !important;
+  min-width: 90px !important;
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  text-align: center !important;
+  margin-left: 10px !important;
 }
-.login-btn:hover, .register-btn:hover, .logout-btn:hover {
-  background: linear-gradient(90deg, #e94e77 0%, #e0e7fa 100%);
-  color: #fff;
-  box-shadow: 0 2px 12px #e94e7733;
+button.login-btn:hover,
+button.logout-btn:hover,
+button.register-btn:hover,
+a.login-btn:hover,
+a.logout-btn:hover,
+a.register-btn:hover {
+  background: #f6f7fb !important;
+  color: #2d2460 !important;
+  border-color: #bfc8e6 !important;
 }

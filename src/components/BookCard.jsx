@@ -34,34 +34,12 @@ const BookCard = ({ cover, title, author, description, status, genres, onEdit, o
           boxShadow: '0 1px 4px #e0e7fa',
           transition: 'background 0.2s',
           letterSpacing: '0.01em',
+          marginTop: '22px'
         }}>Show</a>
-        {!hideRead && (
-          <a href={`/read/${id}`} style={{
-            background: '#e0e7fa',
-            color: '#2d3a4a',
-            border: 'none',
-            borderRadius: 8,
-            padding: '6px 18px',
-            fontWeight: 600,
-            fontSize: '1.01rem',
-            textDecoration: 'none',
-            boxShadow: '0 1px 4px #e0e7fa',
-            transition: 'background 0.2s',
-            letterSpacing: '0.01em',
-          }}>Read</a>
-        )}
         {onEdit && (
           <button
             className="book-edit-btn"
             onClick={onEdit}
-            style={{
-              background: "#e67e22",
-              color: "#fff",
-              border: "none",
-              borderRadius: 6,
-              padding: "4px 12px",
-              cursor: "pointer",
-            }}
           >
             Editar
           </button>
@@ -70,14 +48,6 @@ const BookCard = ({ cover, title, author, description, status, genres, onEdit, o
           <button
             className="book-delete-btn"
             onClick={onDelete}
-            style={{
-              background: "#e74c3c",
-              color: "#fff",
-              border: "none",
-              borderRadius: 6,
-              padding: "4px 12px",
-              cursor: "pointer",
-            }}
           >
             Eliminar
           </button>

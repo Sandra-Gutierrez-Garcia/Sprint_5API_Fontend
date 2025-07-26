@@ -40,3 +40,114 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Botones con estilo sencillo, manteniendo coherencia visual */
+button,
+button:active,
+button:focus,
+button:visited {
+  background: #f6f7fb;
+  color: #4a3c8c;
+  border: 1px solid #d1d3e0;
+  border-radius: 8px;
+  padding: 0.5em 1.2em;
+  font-size: 1rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  box-shadow: none;
+  outline: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+button:hover {
+  background: #e0e7fa;
+  color: #e94e77;
+  border-color: #bfc8e6;
+}
+
+/* Quitar estilos llamativos de botones específicos (por clase) si existen en otras hojas */
+.profile-header-btn,
+.profile-save-btn,
+.cancel-book-btn,
+.book-add-page-btn,
+.book-pages-dropdown-toggle {
+  background: #f6f7fb !important;
+  color: #4a3c8c !important;
+  border: 1px solid #d1d3e0 !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+
+.profile-header-btn:hover,
+.profile-save-btn:hover,
+.cancel-book-btn:hover,
+.book-add-page-btn:hover,
+.book-pages-dropdown-toggle:hover {
+  background: #e0e7fa !important;
+  color: #e94e77 !important;
+  border-color: #bfc8e6 !important;
+}
+
+/* Botón principal para BookShowPage y BookCard */
+.book-show-btn,
+.book-edit-btn,
+.book-delete-btn,
+.book-fav-btn {
+  background: #fff;
+  color: #423885;
+  border: 1.5px solid #d1d3e0;
+  border-radius: 999px;
+  padding: 0.45em 1.1em;
+  font-size: 1rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  box-shadow: none;
+  outline: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  cursor: pointer;
+  min-width: 90px;
+  margin: 0 6px;
+}
+.book-show-btn:hover,
+.book-edit-btn:hover,
+.book-delete-btn:hover,
+.book-fav-btn:hover {
+  background: #f6f7fb;
+  color: #2d2460;
+  border-color: #bfc8e6;
+}
+.book-fav-btn.active {
+  background: #c7e6d7;
+  color: #218c5a;
+  border-color: #218c5a;
+}
+
+/* Centra y mejora el estilo del botón Show en BookCard y BookShowPage */
+.book-show-btn {
+  display: block;
+  margin: 28px auto 0 auto;
+  background: #fff;
+  color: #423885;
+  border: 1.5px solid #d1d3e0;
+  border-radius: 999px;
+  padding: 0.5em 1.4em;
+  font-size: 1.05rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  box-shadow: 0 2px 8px 0 rgba(80,80,120,0.07);
+  outline: none;
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  min-width: 110px;
+  text-align: center;
+}
+.book-show-btn:hover {
+  background: #f6f7fb;
+  color: #2d2460;
+  border-color: #bfc8e6;
+  box-shadow: 0 4px 16px 0 rgba(80,80,120,0.13);
+}
+
+/* No tocar el header, los estilos de header se mantienen en Header.css */

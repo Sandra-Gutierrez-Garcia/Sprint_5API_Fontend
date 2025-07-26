@@ -43,35 +43,9 @@ const BookShowPage = () => {
           {book.description}
         </div>
         <div style={{display:'flex', justifyContent:'center', gap:16}}>
-          <button onClick={() => navigate(`/read/${book.id}`)} style={{
-            background: '#e0e7fa',
-            color: '#2d3a4a',
-            border: 'none',
-            borderRadius: 8,
-            padding: '10px 32px',
-            fontWeight: 600,
-            fontSize: '1.08rem',
-            textDecoration: 'none',
-            boxShadow: '0 1px 4px #e0e7fa',
-            transition: 'background 0.2s',
-            letterSpacing: '0.01em',
-            cursor: 'pointer',
-            display: 'block'
-          }}>Leer</button>
-          <button onClick={handleFavorite} style={{
-            background: favorite ? '#c7e6d7' : '#f8fafc',
-            color: favorite ? '#218c5a' : '#2d3a4a',
-            border: '1.5px solid #e0e7fa',
-            borderRadius: 8,
-            padding: '10px 24px',
-            fontWeight: 600,
-            fontSize: '1.08rem',
-            boxShadow: '0 1px 4px #e0e7fa',
-            transition: 'background 0.2s',
-            letterSpacing: '0.01em',
-            cursor: 'pointer',
-            display: 'block'
-          }}>{favorite ? 'Quitar de favoritos' : 'Guardar en favoritos'}</button>
+          <button className={`book-fav-btn${favorite ? ' active' : ''}`} onClick={handleFavorite}>
+            {favorite ? 'Quitar de favoritos' : 'Guardar en favoritos'}
+          </button>
         </div>
       </div>
     </>
