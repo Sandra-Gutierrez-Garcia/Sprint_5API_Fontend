@@ -35,6 +35,11 @@ export default function BookCreatePage() {
   const user = getCurrentUser();
 
   const handleSave = () => {
+    // Validar que al menos un género esté seleccionado
+    if (!book.genres || book.genres.length === 0) {
+      alert('Debes seleccionar al menos un género para el libro.');
+      return;
+    }
     // Obtener writer actual por iduser
     const writers = getWritersFromLocalStorage();
     const writer = writers.find(w => w.iduser === user?.id);
@@ -124,43 +129,50 @@ export default function BookCreatePage() {
                   style={{ width: 120, height: 120, objectFit: 'cover', borderRadius: 14, marginTop: 10, boxShadow: '0 2px 12px #e0e7fa', border:'2px solid #e0e7fa', alignSelf:'center' }}
                 />
               )}
-              <label>
-                Géneros:
-                <div className="genre-dropdown-container">
-                  <button
-                    type="button"
-                    className="genre-dropdown-toggle"
-                    onClick={() => setShowGenres(!showGenres)}
-                  >
-                    {book.genres.length > 0 ? `${book.genres.length} seleccionado(s)` : 'Seleccionar géneros'}
-                    <span className="genre-dropdown-arrow">▼</span>
-                  </button>
-                  {showGenres && (
-                    <div className="genre-checkbox-list genre-dropdown-list">
-                      {GENRES.map((g) => (
-                        <label key={g} className="genre-checkbox-item">
-                          <input
-                            type="checkbox"
-                            value={g}
-                            checked={book.genres.includes(g)}
-                            onChange={e => {
-                              setBook((prev) =>
-                                e.target.checked
-                                  ? { ...prev, genres: [...prev.genres, g] }
-                                  : { ...prev, genres: prev.genres.filter(genre => genre !== g) }
-                              );
-                            }}
-                          />
-                          {g}
-                        </label>
-                      ))}
-                    </div>
-                  )}
+              <label style={{width:'100%',marginBottom:18, fontWeight:600, color:'#2d3a4a', fontSize:'1.09rem', letterSpacing:'0.01em', display:'flex', flexDirection:'column', gap:6}}>
+                <span style={{display:'flex', alignItems:'center', gap:6}}>
+                  Géneros
+                  <span style={{color:'red', fontSize:'1.2em'}}>*</span>
+                </span>
+                <div style={{
+                  display:'grid',
+                  gridTemplateColumns:'repeat(auto-fit, minmax(160px, 1fr))',
+                  gap:'10px 18px', marginTop:'8px',
+                  background:'#f8fafc', borderRadius:10, padding:'14px 10px', border:'1.5px solid #dbeafe',
+                  boxShadow:'0 1px 4px #e0e7fa',
+                  minHeight:48
+                }}>
+                  {GENRES.map(g => (
+                    <label key={g} style={{
+                      display:'flex', alignItems:'center', gap:6, fontWeight:500, fontSize:'1.04rem',
+                      background: book.genres.includes(g) ? '#e0e7fa' : 'transparent',
+                      borderRadius:6, padding:'4px 10px', cursor:'pointer',
+                      border: book.genres.includes(g) ? '1.5px solid #4a3c8c' : '1.5px solid transparent',
+                      transition:'all 0.2s',
+                      width:'100%'
+                    }}>
+                      <input
+                        type="checkbox"
+                        value={g}
+                        checked={book.genres.includes(g)}
+                        onChange={e => {
+                          if (e.target.checked) {
+                            setBook(prev => ({ ...prev, genres: [...prev.genres, g] }));
+                          } else {
+                            setBook(prev => ({ ...prev, genres: prev.genres.filter(gen => gen !== g) }));
+                          }
+                        }}
+                        style={{ accentColor: '#4a3c8c', width:18, height:18 }}
+                      />
+                      {g}
+                    </label>
+                  ))}
                 </div>
-                <div className="genre-warning">
-                  Una vez creado el libro <b>no podrás volver a cambiar los géneros</b>.
-                </div>
+                <span style={{fontSize:'0.98rem', color:'#888', marginTop:'6px'}}>Selecciona uno o más géneros.</span>
               </label>
+              <div style={{marginBottom: '16px', color: '#e67e22', fontWeight: 600, fontSize: '1.01rem', textAlign: 'center'}}>
+                Una vez guardes el libro con el género seleccionado, <span style={{color:'#c0392b'}}>no podrás modificarlo</span>.
+              </div>
               <div className="form-buttons-row">
                 <button type="submit">Guardar Libro</button>
                 <button type="button" className="cancel-book-btn" onClick={() => {
