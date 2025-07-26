@@ -1,6 +1,6 @@
 # AppBook - Resumen del Proyecto IA
 
-## 1. IA seleccionada y motivo
+## 1. IA seleccionada i motivo
  Antes de decidirme, comparé varias opciones (ChatGPT, DALL·E, Gemini, DeepSeek) y elegí Copilot por su integración directa en el editor, facilidad de uso y calidad de las sugerencias dependiendo del contexto del proyecto.
  
 **Ventajas:**
@@ -36,6 +36,49 @@ Moltes de les interaccions més útils van ser processos guiats, on jo explicava
 
     - Aquest estil de col·laboració va fer que el desenvolupament fos molt més ràpid, personalitzat i alineat amb el que realment volia aconseguir.
 
+- **Gestió localStorage:**
+  - Le pregunte como hacer las preubas que todo funcione bien, sin tener que hacer un backend real. Todo desde el Frontend.
+  - Respuesta IA: Con el localStorage, se pueden simular operaciones CRUD (crear, leer, actualizar, eliminar) de manera sencilla. La IA generó funciones para guardar, recuperar y eliminar datos de usuarios, libros y autores en el localStorage.
+    ```js
+    // Guardar usuari al localStorage
+    const saveUserToLocalStorage = (user) => {
+      const users = getUsersFromLocalStorage();
+      users.push(user);
+      localStorage.setItem('users', JSON.stringify(users));
+    };
+
+    // Recuperar usuaris del localStorage
+    const getUsersFromLocalStorage = () => {
+      return JSON.parse(localStorage.getItem('users')) || [];
+    };
+    ```
+- **Filtros de statuts o generos**
+  - Le comente que quwria implementar un sistema de filtres per mostrar llibres segons el seu estat (en procés, acabat, abandonat) i gènere y que se mostraran tots els llibres junts segons l'estat seleccionat.
+  - Respuesta IA: Generación de un sistema de filtros combinados que permite seleccionar múltiples criterios y mostrar los libros correspondientes. La IA propuso un componente de filtro que actualiza el estado de los libros mostrados según las selecciones del usuario.
+    ```js
+    // Componente de filtres
+    const Filters = () => {
+      // Filtres per estat i gènere
+      const [statusFilter, setStatusFilter] = useState('');
+      const [genreFilter, setGenreFilter] = useState('');
+
+      return (
+        <div>
+          <select onChange={(e) => setStatusFilter(e.target.value)}>
+            <option value="">Tots els estats</option>
+            <option value="in-progress">En procés</option>
+            <option value="finished">Acabat</option>
+            <option value="abandoned">Abandonat</option>
+          </select>
+          <select onChange={(e) => setGenreFilter(e.target.value)}>
+            <option value="">Tots els gèneres</option>
+            <option value="fiction">Ficció</option>
+            <option value="non-fiction">No ficció</option>
+            <option value="fantasy">Fantasia</option>
+          </select>
+        </div>
+      );
+    };
 
 - **Edició de llibre o usuari des del frontend:**
   - Exemple: “Vull editar la informació d’un llibre o d’un usuari directament des de la interfície, sense backend.”
@@ -112,11 +155,17 @@ const handleSave = (e) => {
 - Es van centralitzar estils i components per facilitar el manteniment i la coherència visual.
 - Es va adaptar el codi per funcionar sense backend, simulant usuaris i sessions en localStorage.
 
-## 4. Connexió frontend-backend
-- El frontend està preparat per consumir una API RESTful (fetch/axios).
-- Es van simular crides a l'API amb dades fictícies, mostrant com s'integrarien els endpoints reals.
-- El codi es pot connectar fàcilment a un backend PHP/Laravel canviant la URL dels endpoints.
-- Reptes: adaptar la interfície per funcionar sense dades reals i garantir flexibilitat per a dades dinàmiques.
+## 4. Connexió entre frontend i backend
+
+Aquest projecte correspon a un exercici de nivell 1, on no s'ha implementat la connexió real amb un backend (com una API PHP/Laravel). Tota la gestió de dades (usuaris, escriptors i llibres) es realitza exclusivament des del frontend utilitzant `localStorage`.
+
+**Procés i reptes:**
+- S'han creat funcions que simulen les operacions CRUD (crear, llegir, actualitzar, eliminar) sobre usuaris, escriptors i llibres, emmagatzemant la informació al navegador.
+- El codi està estructurat perquè, en el futur, només calgui substituir aquestes funcions per peticions `fetch` o `axios` als endpoints reals del backend.
+- El principal repte ha estat mantenir la coherència i la integritat de les dades (relacions entre usuaris, escriptors i llibres) sense una base de dades real, cosa que s'ha resolt amb lògica addicional al frontend.
+- Aquesta aproximació permet visualitzar i provar tota la funcionalitat de l'aplicació sense necessitat de desplegar un backend ni una API real.
+
+**Nota:** Quan es vulgui connectar amb un backend real, només caldrà adaptar les funcions de lectura/escriptura de dades per utilitzar l'API corresponent.
 
 ## 5. Reflexió sobre l'aprenentatge
 - He après a iterar ràpidament sobre el disseny i la funcionalitat amb ajuda de la IA.
@@ -136,7 +185,15 @@ const handleSave = (e) => {
 - S'ha afegit la funcionalitat per editar i eliminar llibres directament des de la interfície, amb actualització automàtica de la llista.
 - S'ha implementat la pàgina d'edició de perfil d'usuari, permetent canviar nom, email i contrasenya amb el mateix estil modern que la vista de perfil.
 
+## 3. Millores implementades: Filtres avançats a la pàgina de llibres
 
+S'ha afegit un sistema de filtres combinats a la pàgina de llibres (BookPage):
 
----
+- **Filtre per estat del llibre:** Permet mostrar només llibres "En procés", "Terminat" o "Abandonat". Si s'aplica el filtre, es mostren tots els llibres junts segons l'estat seleccionat.
+- **Filtre per gènere:** Permet mostrar només llibres d'un gènere concret. Si s'aplica el filtre, es mostren tots els llibres junts segons el gènere seleccionat.
+- **Combinació de filtres:** Es poden combinar els dos filtres per veure, per exemple, només llibres de "Romance" que estiguin "En procés".
+- **Vista per defecte:** Si no s'aplica cap filtre, la vista mostra els llibres agrupats per gènere i també una secció amb tots els llibres.
+
+Aquesta millora facilita la cerca i navegació entre llibres segons l'estat i el gènere, millorant l'experiència d'usuari i la gestió de la biblioteca.
+
 
