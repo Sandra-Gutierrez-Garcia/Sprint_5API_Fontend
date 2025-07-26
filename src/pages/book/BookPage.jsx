@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Componentes
 import Header from '../../components/Header';
@@ -8,7 +8,8 @@ import BookCard from '../../components/BookCard';
 import '../../styles/book/BookPage.css';
 
 // Utils
-import { books, genres } from '../../utils/book/booksData';
+import { getBooksFromStorage } from '../../utils/book/bookUtils';
+import { genres } from '../../utils/book/booksData';
 
 const BookSection = ({ genre, books }) => (
   <section className="books-section">
@@ -31,9 +32,13 @@ const STATUS_OPTIONS = [
 const BookPage = () => {
   const [statusFilter, setStatusFilter] = useState('');
   const [genreFilter, setGenreFilter] = useState('');
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+    setBooks(getBooksFromStorage());
+  }, []);
   const filteredBooks = books.filter(book => {
     const statusOk = statusFilter ? book.status === statusFilter : true;
-    const genreOk = genreFilter ? book.genre === genreFilter : true;
+    const genreOk = genreFilter ? (book.genres ? book.genres.includes(genreFilter) : false) : true;
     return statusOk && genreOk;
   });
 
@@ -80,7 +85,7 @@ const BookPage = () => {
               <h2>Todos los libros</h2>
               <div className="books-list">
                 {filteredBooks.map(book => (
-                  <BookCard key={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description || ""} status={book.status} genres={book.genres} />
+                  <BookCard key={book.id} cover={book.cover} title={book.title} author={book.author} description={book.description || ""} genres={book.genres} hideStatus />
                 ))}
               </div>
             </section>

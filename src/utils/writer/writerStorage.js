@@ -16,10 +16,13 @@ export function getWritersFromLocalStorage() {
 export function deleteWriterByIduser(iduser) {
   // Eliminar writer
   const writers = getWritersFromLocalStorage();
+  const writerToDelete = writers.find(w => w.iduser === iduser);
   const updatedWriters = writers.filter(w => w.iduser !== iduser);
   localStorage.setItem('writers', JSON.stringify(updatedWriters));
   // Eliminar libros asociados a ese writer
-  const books = JSON.parse(localStorage.getItem('books') || '[]');
-  const updatedBooks = books.filter(b => b.idwriter !== (writers.find(w => w.iduser === iduser)?.idwriter));
-  localStorage.setItem('books', JSON.stringify(updatedBooks));
+  if (writerToDelete) {
+    const books = JSON.parse(localStorage.getItem('books') || '[]');
+    const updatedBooks = books.filter(b => b.idwriter !== writerToDelete.idwriter);
+    localStorage.setItem('books', JSON.stringify(updatedBooks));
+  }
 }

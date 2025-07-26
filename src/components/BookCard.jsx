@@ -4,7 +4,7 @@ import React from "react";
 import "../styles/book/BookCard.css";
 
 // Componente para mostrar la información de un libro
-const BookCard = ({ cover, title, author, description, status, genres, onEdit, onDelete }) => (
+const BookCard = ({ cover, title, author, description, status, genres, onEdit, onDelete, hideStatus }) => (
   <div className="showcase-book">
     <img src={cover} alt={title} className="showcase-book-img" />
     <div className="showcase-book-info">
@@ -16,7 +16,7 @@ const BookCard = ({ cover, title, author, description, status, genres, onEdit, o
           Géneros: {genres.join(', ')}
         </div>
       )}
-      {status && (
+      {!hideStatus && status && (
         <div style={{ margin: '4px 0', fontSize: '0.97rem', color: '#888', fontWeight: 500 }}>
           Estado: <span style={{ color: status === 'terminado' ? '#27ae60' : status === 'abandonado' ? '#e74c3c' : '#e67e22' }}>{status.charAt(0).toUpperCase() + status.slice(1)}</span>
         </div>
