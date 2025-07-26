@@ -30,9 +30,12 @@ const STATUS_OPTIONS = [
 
 const BookPage = () => {
   const [statusFilter, setStatusFilter] = useState('');
-  const filteredBooks = statusFilter
-    ? books.filter(book => book.status === statusFilter)
-    : books;
+  const [genreFilter, setGenreFilter] = useState('');
+  const filteredBooks = books.filter(book => {
+    const statusOk = statusFilter ? book.status === statusFilter : true;
+    const genreOk = genreFilter ? book.genre === genreFilter : true;
+    return statusOk && genreOk;
+  });
 
   return (
     <>
@@ -48,8 +51,18 @@ const BookPage = () => {
               <option key={opt.value} value={opt.value}>{opt.label}</option>
             ))}
           </select>
+          <label style={{fontWeight:600, color:'#2d3a4a', fontSize:'1.08rem'}}>Filtrar por género:</label>
+          <select
+            value={genreFilter}
+            onChange={e => setGenreFilter(e.target.value)}
+            style={{borderRadius:8, border:'1.5px solid #dbeafe', padding:'8px 16px', fontSize:'1.05rem', background:'#fff', boxShadow:'0 1px 4px #e0e7fa', outline:'none'}}>
+            <option value=''>Todos</option>
+            {genres.map(g => (
+              <option key={g} value={g}>{g}</option>
+            ))}
+          </select>
         </div>
-        {statusFilter ? (
+        {(statusFilter || genreFilter) ? (
           <section className="books-section">
             <h2>Libros</h2>
             <div className="books-list">
