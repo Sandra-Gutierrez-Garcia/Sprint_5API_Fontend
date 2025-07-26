@@ -47,7 +47,8 @@ export function handleEditSubmit({ book, pages, setSuccess, navigate }) {
   const bookToUpdate = {
     ...book,
     idwriter: original?.idwriter ?? book.idwriter,
-    pages
+    pages,
+    cover: book.image || book.cover || '', // Asegura que cover tenga la imagen
   };
   updateBookInStorage(bookToUpdate);
   setSuccess(true);

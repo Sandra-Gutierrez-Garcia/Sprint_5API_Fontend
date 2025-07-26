@@ -48,7 +48,8 @@ export default function BookCreatePage() {
       ...book,
       author: user?.username || '',
       idwriter: writer?.idwriter || null, // Vinculación por idwriter
-      pages
+      pages,
+      cover: book.image || book.cover || '', // Asegura que cover tenga la imagen
     };
     const id = saveBookToStorage(bookToSave);
     setBook(BOOK_CREATE);
@@ -130,10 +131,22 @@ export default function BookCreatePage() {
                 />
               )}
               <label style={{width:'100%',marginBottom:18, fontWeight:600, color:'#2d3a4a', fontSize:'1.09rem', letterSpacing:'0.01em', display:'flex', flexDirection:'column', gap:6}}>
-                <span style={{display:'flex', alignItems:'center', gap:6}}>
-                  Géneros
-                  <span style={{color:'red', fontSize:'1.2em'}}>*</span>
-                </span>
+                Estado del libro
+                <select
+                  name="status"
+                  value={book.status}
+                  onChange={e => setBook(prev => ({ ...prev, status: e.target.value }))}
+                  required
+                  style={{borderRadius:10, border:'1.5px solid #dbeafe', padding:'12px 16px', fontSize:'1.08rem', background:'#fff', boxShadow:'0 1px 4px #e0e7fa', outline:'none'}}
+                >
+                  <option value="proceso">En proceso</option>
+                  <option value="terminado">Terminado</option>
+                  <option value="abandonado">Abandonado</option>
+                </select>
+              </label>
+              <label style={{width:'100%',marginBottom:18, fontWeight:600, color:'#2d3a4a', fontSize:'1.09rem', letterSpacing:'0.01em', display:'flex', flexDirection:'column', gap:6}}>
+                Géneros
+                <span style={{color:'red', fontSize:'1.2em'}}>*</span>
                 <div style={{
                   display:'grid',
                   gridTemplateColumns:'repeat(auto-fit, minmax(160px, 1fr))',

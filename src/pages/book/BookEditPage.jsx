@@ -99,6 +99,20 @@ export default function BookEditPage() {
                   style={{borderRadius:10, border:'1.5px solid #dbeafe', padding:'12px 16px', fontSize:'1.08rem', background:'#f3f4f6', boxShadow:'0 1px 4px #e0e7fa', outline:'none', color:'#888'}}
                 />
               </label>
+              <label style={{width:'100%',marginBottom:18, fontWeight:600, color:'#2d3a4a', fontSize:'1.09rem', letterSpacing:'0.01em', display:'flex', flexDirection:'column', gap:6}}>
+                Estado del libro
+                <select
+                  name="status"
+                  value={book.status}
+                  onChange={e => setBook(prev => ({ ...prev, status: e.target.value }))}
+                  required
+                  style={{borderRadius:10, border:'1.5px solid #dbeafe', padding:'12px 16px', fontSize:'1.08rem', background:'#fff', boxShadow:'0 1px 4px #e0e7fa', outline:'none'}}
+                >
+                  <option value="proceso">En proceso</option>
+                  <option value="terminado">Terminado</option>
+                  <option value="abandonado">Abandonado</option>
+                </select>
+              </label>
               <div className="form-buttons-row">
                 <button type="submit">Guardar Cambios</button>
                 <button type="button" className="cancel-book-btn" onClick={() => {

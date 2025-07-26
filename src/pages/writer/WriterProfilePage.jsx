@@ -86,6 +86,8 @@ function WriterProfilePage() {
                 title={book.title}
                 author={book.author}
                 description={book.description || ""}
+                status={book.status}
+                genres={book.genres}
                 onEdit={() => navigate(`/book/edit/${book.id}`)}
                 onDelete={() => handleDeleteBook(book.id)}
               />
