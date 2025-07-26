@@ -1,0 +1,63 @@
+.writer-page {
+  padding: 2rem;
+}
+.writers-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.writer-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 0.7rem;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.writer-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.writer-image {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #eee;
+}
+.writer-info {
+  text-align: center;
+}
+.writer-name {
+  margin: 0.2rem 0 0.1rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.writer-bio {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+.writer-books-section {
+  margin-top: 0.5rem;
+}
+.writer-books-title {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.writer-books-list {
+  list-style: disc inside;
+  padding-left: 0;
+  margin: 0;
+  text-align: left;
+}
+.writer-book-item {
+  font-size: 0.95rem;
+  margin-bottom: 0.1rem;
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+}

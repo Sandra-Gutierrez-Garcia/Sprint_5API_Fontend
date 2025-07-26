@@ -13,6 +13,7 @@ import BookCreatePage from './pages/book/BookCreatePage'
 import BookEditPage from './pages/book/BookEditPage'
 import BookReadPage from './pages/book/BookReadPage'
 import BookShowPage from './pages/book/BookShowPage'
+import WriterPage from './pages/writer/WriterPage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path='/perfil-writer/editar' element={<WriterProfileEditPage />} />
         <Route path="/book/:id" element={<BookShowPage />} />
         <Route path="/read/:id" element={<BookReadPage />} />
+        <Route path="/writers" element={<WriterPage />} />
       </Routes>
     </Router>
   )

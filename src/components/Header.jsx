@@ -23,7 +23,7 @@ const Header = () => {
       <nav className="header-menu">
         <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
         <Link to="/books" className={location.pathname === "/books" ? "active" : ""}>Books</Link>
-        <a href="#">Writers</a>
+        <Link to="/writers" className={location.pathname === "/writers" ? "active" : ""}>Writers</Link>
       </nav>
       <div className="header-actions">
         {user ? (
